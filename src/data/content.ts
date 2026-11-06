@@ -4,7 +4,10 @@ import {
   Globe,
   Megaphone,
   PenTool,
+  Palette,
+  Rocket,
   Share2,
+  Target,
   TrendingUp,
   type LucideIcon,
 } from 'lucide-react';
@@ -27,7 +30,7 @@ export const SERVICES: {
     number: '01',
     name: 'Brand Strategy and Identity',
     summary:
-      'We define what your brand stands for, then shape a identity system that is distinctive, ownable and built to last.',
+      'We define what your brand stands for, then shape an identity system that is distinctive, ownable and built to last.',
     deliverables: ['Positioning', 'Naming and verbal identity', 'Visual identity system'],
     icon: Compass,
   },
@@ -81,6 +84,31 @@ export const SERVICES: {
   },
 ];
 
+export const STUDIO_PILLARS: {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}[] = [
+  {
+    title: 'Strategy',
+    description:
+      'We start with the business question, the audience and the market, so every creative decision has a clear reason behind it.',
+    icon: Target,
+  },
+  {
+    title: 'Creative',
+    description:
+      'Distinctive identities, films and campaigns made to be remembered, not just scrolled past.',
+    icon: Palette,
+  },
+  {
+    title: 'Execution',
+    description:
+      'Launch-ready work delivered across channels and measured against outcomes you can actually see.',
+    icon: Rocket,
+  },
+];
+
 export const PRINCIPLES = [
   'THINK BEFORE YOU CREATE.',
   'IDEAS BEFORE EXECUTION.',
@@ -94,26 +122,54 @@ export const PROCESS_STEPS = [
     number: '01',
     title: 'DISCOVER',
     description: 'Understanding the business, audience and opportunity.',
+    outcome: 'Clear goals, audience insight and a shared view of the challenge.',
   },
   {
     number: '02',
     title: 'STRATEGIZE',
     description: 'Building a clear direction and actionable plan.',
+    outcome: 'A written plan with priorities, messaging and success measures.',
   },
   {
     number: '03',
     title: 'CREATE',
     description: 'Turning ideas into distinctive creative work.',
+    outcome: 'Concepts developed into finished, on-brand creative ready for review.',
   },
   {
     number: '04',
     title: 'EXECUTE',
     description: 'Bringing the strategy to life across relevant channels.',
+    outcome: 'Campaigns, websites and content launched and managed across channels.',
   },
   {
     number: '05',
     title: 'OPTIMIZE',
     description: 'Measuring performance, learning and improving.',
+    outcome: 'Regular reporting and refinements that build on what is working.',
+  },
+];
+
+export const FAQS = [
+  {
+    question: 'What happens after I get in touch?',
+    answer:
+      'We read every enquiry personally and reply by email to arrange a short call about your goals, timing and budget.',
+  },
+  {
+    question: 'Do you work with small businesses as well as larger brands?',
+    answer:
+      'Yes. We scope each project around the goals and resources of the business, from focused brand projects to ongoing partnerships.',
+  },
+  {
+    question: 'Do I need a full brief before contacting you?',
+    answer:
+      'No. A few sentences about what you are working on is enough. We will help shape the brief together on the first call.',
+  },
+  {
+    question: 'How is work priced?',
+    answer:
+      'Projects are quoted after an initial conversation, based on scope. The budget field helps us point you in the right direction.',
   },
 ];
 

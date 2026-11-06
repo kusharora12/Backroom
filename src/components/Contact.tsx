@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { CircleAlert, Check, LoaderCircle } from 'lucide-react';
 import Reveal from '@/components/Reveal';
+import ContactFaq from '@/components/ContactFaq';
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY';
@@ -121,6 +122,7 @@ export default function Contact() {
           <p className="mt-8 max-w-md text-lg leading-[1.5] text-white/75">
             Tell us what you&apos;re working on. Let&apos;s make something meaningful.
           </p>
+          <ContactFaq />
         </Reveal>
 
         <Reveal className="md:col-span-6 md:col-start-7" delay={150}>

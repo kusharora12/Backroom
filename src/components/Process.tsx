@@ -28,6 +28,9 @@ export default function Process() {
                   {step.title}
                 </h3>
                 <p className="mt-4 max-w-xs text-[15px] leading-[1.5] text-white/70">{step.description}</p>
+                <p className="mt-6 max-w-xs border-t border-white/15 pt-4 font-mono text-[11px] uppercase leading-[1.5] tracking-[0.12em] text-teal-light">
+                  {step.outcome}
+                </p>
               </div>
             </Reveal>
           ))}

@@ -123,6 +123,23 @@
   animation: scroll-cue 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 38s linear infinite;
+}
+
+.marquee-band:hover .marquee-track {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -138,7 +155,8 @@
 
   .line-rise,
   .fade-up,
-  .scroll-cue {
+  .scroll-cue,
+  .marquee-track {
     animation: none;
     transform: none;
     opacity: 1;

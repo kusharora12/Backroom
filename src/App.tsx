@@ -1,5 +1,6 @@
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
+import Marquee from '@/components/Marquee';
 import StudioIntro from '@/components/StudioIntro';
 import SelectedWork from '@/components/SelectedWork';
 import Services from '@/components/Services';
@@ -7,6 +8,7 @@ import About from '@/components/About';
 import WhyBackroom from '@/components/WhyBackroom';
 import Process from '@/components/Process';
 import Contact from '@/components/Contact';
+import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
       <Navigation />
       <main>
         <Hero />
+        <Marquee />
         <StudioIntro />
         <SelectedWork />
         <Services />
@@ -28,6 +31,7 @@ function App() {
         <WhyBackroom />
         <Process />
         <Contact />
+        <CallToAction />
       </main>
       <Footer />
     </>

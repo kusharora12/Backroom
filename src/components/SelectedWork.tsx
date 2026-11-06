@@ -5,8 +5,11 @@ import { PROJECT_PLACEHOLDERS } from '@/data/content';
 
 type Project = (typeof PROJECT_PLACEHOLDERS)[number];
 
+const FILTERS = ['All', ...Array.from(new Set(PROJECT_PLACEHOLDERS.map((project) => project.category)))];
+
 export default function SelectedWork() {
   const [active, setActive] = useState<Project | null>(null);
+  const [filter, setFilter] = useState('All');
 
   return (
     <section id="work" aria-labelledby="work-title" className="bg-midnight py-28 md:py-40">
@@ -28,11 +31,30 @@ export default function SelectedWork() {
           </Reveal>
         </div>
 
-        <ul className="mt-20 grid gap-16 md:mt-28 md:grid-cols-12 md:gap-x-10 md:gap-y-24">
+        <div role="group" aria-label="Filter projects" className="mt-16 flex flex-wrap gap-2 md:mt-20">
+          {FILTERS.map((option) => {
+            const selected = filter === option;
+            return (
+              <button
+                key={option}
+                type="button"
+                aria-pressed={selected}
+                onClick={() => setFilter(option)}
+                className={`border px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 ${
+                  selected ? 'border-teal-light bg-teal text-white' : 'border-white/25 text-white/75 hover:border-white/60 hover:text-white'
+                }`}
+              >
+                {option}
+              </button>
+            );
+          })}
+        </div>
+
+        <ul className="mt-12 grid gap-16 md:mt-16 md:grid-cols-12 md:gap-x-10 md:gap-y-24">
           {PROJECT_PLACEHOLDERS.map((project, index) => (
             <Reveal as="li" key={project.id} className={`group ${project.span} ${project.offset}`} delay={index * 80}>
               <article>
-                <div className={`relative overflow-hidden bg-forest ${project.aspect}`}>
+                <div className={`relative overflow-hidden bg-forest transition-all duration-700 ${project.aspect} ${filter === 'All' || filter === project.category ? '' : 'opacity-25 grayscale'}`}>
                   <img
                     src={project.image}
                     alt={project.alt}
