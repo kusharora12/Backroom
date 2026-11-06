@@ -1,7 +1,9 @@
 import { useState, type FormEvent } from 'react';
 import { CircleAlert, Check, LoaderCircle } from 'lucide-react';
 import Reveal from '@/components/Reveal';
-import { supabase } from '@/lib/supabase';
+
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY';
 
 const SERVICE_OPTIONS = [
   'Brand Strategy and Identity',
@@ -72,16 +74,24 @@ export default function Contact() {
     if (Object.keys(nextErrors).length > 0) return;
 
     setStatus('submitting');
-    const { error } = await supabase.from('contact_submissions').insert({
-      name: values.name.trim(),
-      email: values.email.trim(),
-      company: values.company.trim() || null,
-      service: values.service || null,
-      budget: values.budget || null,
-      details: values.details.trim(),
-    });
-
-    if (error) {
+    try {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `New enquiry from ${values.name.trim()}`,
+          name: values.name.trim(),
+          email: values.email.trim(),
+          company: values.company.trim() || 'Not provided',
+          service: values.service || 'Not specified',
+          budget: values.budget || 'Not specified',
+          message: values.details.trim(),
+        }),
+      });
+      const result: { success?: boolean } = await response.json();
+      if (!response.ok || !result.success) throw new Error('Submission rejected');
+    } catch {
       setStatus('error');
       return;
     }
