@@ -58,12 +58,7 @@ export default function Hero() {
         >
           <span className="block overflow-hidden pb-[0.08em]">
             <span className="line-rise" style={{ '--line-delay': '300ms' } as React.CSSProperties}>
-              Make your
-            </span>
-          </span>
-          <span className="block overflow-hidden pb-[0.08em]">
-            <span className="line-rise" style={{ '--line-delay': '450ms' } as React.CSSProperties}>
-              mark<span className="text-teal-light">.</span>
+              Kushagra<span className="text-teal-light">.</span>
             </span>
           </span>
         </h1>
