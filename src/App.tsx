@@ -1,4 +1,5 @@
 import Navigation from '@/components/Navigation';
+import CustomCursor from '@/components/CustomCursor';
 import Hero from '@/components/Hero';
 import Marquee from '@/components/Marquee';
 import StudioIntro from '@/components/StudioIntro';
@@ -20,6 +21,7 @@ function App() {
       >
         Skip to content
       </a>
+      <CustomCursor />
       <Navigation />
       <main>
         <Hero />

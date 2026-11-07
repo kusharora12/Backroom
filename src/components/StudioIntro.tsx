@@ -1,4 +1,5 @@
 import Reveal from '@/components/Reveal';
+import ScrollText from '@/components/ScrollText';
 import { STUDIO_PILLARS } from '@/data/content';
 
 const INTRO_IMAGE =
@@ -13,10 +14,7 @@ export default function StudioIntro() {
         </Reveal>
 
         <Reveal delay={100}>
-          <h2
-            id="studio-title"
-            className="display mt-8 text-[clamp(40px,7vw,112px)] text-midnight"
-          >
+          <h2 id="studio-title" className="display mt-8 text-[clamp(40px,7vw,112px)] text-midnight">
             Good work gets noticed.
             <br />
             <span className="text-teal">Great work changes things.</span>
@@ -25,24 +23,25 @@ export default function StudioIntro() {
 
         <div className="mt-16 grid gap-12 md:mt-24 md:grid-cols-12 md:gap-x-12">
           <Reveal className="md:col-span-5 md:col-start-2" delay={150}>
-            <div className="image-reveal overflow-hidden">
+            <div className="overflow-hidden">
               <img
                 src={INTRO_IMAGE}
                 alt="Concrete architecture with soft light and shadow patterns"
                 width={940}
                 height={650}
                 loading="lazy"
-                className="aspect-[4/3] w-full object-cover grayscale-[30%]"
+                className="aspect-[4/3] w-full object-cover grayscale-[30%] transition-transform duration-[1400ms] ease-out hover:scale-105"
               />
             </div>
           </Reveal>
 
           <Reveal className="md:col-span-4 md:col-start-8 md:self-end" delay={250}>
-            <p className="text-lg leading-[1.5] text-midnight/80 md:text-xl">
-              We&apos;re an independent creative and marketing studio bringing strategy, creativity and execution
-              together. From building distinctive brands to creating digital experiences, we help businesses make a
-              lasting impression.
-            </p>
+            <ScrollText
+              text="We're an independent creative and marketing studio bringing strategy, creativity and execution together. From building distinctive brands to creating digital experiences, we help businesses make a lasting impression."
+              rgb="8,10,11"
+              mutedAlpha={0.2}
+              className="text-lg leading-[1.5] md:text-xl"
+            />
           </Reveal>
         </div>
 

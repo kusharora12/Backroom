@@ -123,6 +123,92 @@
   animation: scroll-cue 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 
+@keyframes letter-rise {
+  to {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.kinetic-letter-wrap {
+  display: inline-block;
+  transform: translateY(110%) rotate(4deg);
+  transform-origin: left bottom;
+  animation: letter-rise 1100ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--line-delay, 0ms);
+}
+
+.kinetic-letter {
+  display: inline-block;
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 400ms ease;
+}
+
+.kinetic-letter:hover {
+  transform: skewX(-10deg);
+  color: #35b5a3;
+}
+
+.hero-orb {
+  background: radial-gradient(circle at 32% 30%, #8fe3d6 0%, #35b5a3 16%, #007f73 42%, #075b54 66%, rgba(8, 10, 11, 0) 70%);
+  box-shadow:
+    inset -30px -40px 80px rgba(8, 10, 11, 0.55),
+    0 0 140px rgba(0, 127, 115, 0.35);
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-orbit {
+  animation: orbit 60s linear infinite;
+}
+
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+.custom-cursor-dot,
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  border-radius: 9999px;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.custom-cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #ffffff;
+  transition: opacity 300ms ease;
+}
+
+.custom-cursor-ring {
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border: 1px solid rgba(53, 181, 163, 0.8);
+  box-shadow: 0 0 28px rgba(0, 127, 115, 0.45);
+  transition:
+    scale 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 400ms ease,
+    border-color 400ms ease,
+    opacity 300ms ease;
+}
+
+.custom-cursor-ring[data-active='true'] {
+  scale: 1.8;
+  border-color: #35b5a3;
+  background-color: rgba(53, 181, 163, 0.12);
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -156,7 +242,9 @@
   .line-rise,
   .fade-up,
   .scroll-cue,
-  .marquee-track {
+  .marquee-track,
+  .kinetic-letter-wrap,
+  .hero-orbit {
     animation: none;
     transform: none;
     opacity: 1;

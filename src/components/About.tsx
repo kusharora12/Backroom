@@ -1,4 +1,5 @@
 import Reveal from '@/components/Reveal';
+import ScrollText from '@/components/ScrollText';
 
 const ABOUT_IMAGE =
   'https://images.pexels.com/photos/7091834/pexels-photo-7091834.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
@@ -9,14 +10,14 @@ export default function About() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
         <div className="grid gap-16 md:grid-cols-12 md:gap-x-12">
           <Reveal className="md:col-span-5">
-            <div className="image-reveal relative overflow-hidden">
+            <div className="relative overflow-hidden">
               <img
                 src={ABOUT_IMAGE}
                 alt="Creative workspace with a magazine and natural light"
                 width={940}
                 height={650}
                 loading="lazy"
-                className="aspect-[3/4] w-full object-cover"
+                className="aspect-[3/4] w-full object-cover transition-transform duration-[1400ms] ease-out hover:scale-105"
               />
               <div className="absolute bottom-0 left-0 h-1 w-full bg-teal" aria-hidden="true" />
             </div>
@@ -33,14 +34,19 @@ export default function About() {
             </Reveal>
 
             <Reveal delay={200}>
-              <div className="mt-12 space-y-6 text-lg leading-[1.5] text-white/75">
-                <p>
-                  We believe great marketing starts with understanding people, culture and the bigger picture.
-                </p>
-                <p>
-                  BACKROOM STUDIO CO. brings together strategic thinking, creative direction and execution to create work
-                  that connects with people and delivers meaningful business outcomes.
-                </p>
+              <div className="mt-12 space-y-6">
+                <ScrollText
+                  text="We believe great marketing starts with understanding people, culture and the bigger picture."
+                  rgb="255,255,255"
+                  mutedAlpha={0.22}
+                  className="text-lg leading-[1.5]"
+                />
+                <ScrollText
+                  text="BACKROOM STUDIO CO. brings together strategic thinking, creative direction and execution to create work that connects with people and delivers meaningful business outcomes."
+                  rgb="255,255,255"
+                  mutedAlpha={0.22}
+                  className="text-lg leading-[1.5]"
+                />
               </div>
             </Reveal>
           </div>

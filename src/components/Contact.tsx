@@ -7,13 +7,15 @@ const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY';
 
 const SERVICE_OPTIONS = [
-  'Brand Strategy and Identity',
-  'Creative Direction',
-  'Website Design and Development',
-  'Social Media Management',
+  'Brand Strategy & Identity',
+  'Creative & Design',
+  'Website Designing',
+  'SEO & Google Business Profile',
   'Performance Marketing',
-  'Content Production',
-  'Digital Strategy',
+  'Social Media Marketing & Content Shoot',
+  'WhatsApp & Email Marketing',
+  'AI Automations & Creative Production',
+  'Influencer Marketing & UGC Production',
   'Not sure yet',
 ];
 

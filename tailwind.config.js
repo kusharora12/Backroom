@@ -11,6 +11,7 @@ export default {
           dark: '#075B54',
         },
         forest: '#102B28',
+        cream: '#F3EDE1',
       },
       fontFamily: {
         display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],

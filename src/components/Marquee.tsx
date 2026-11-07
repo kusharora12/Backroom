@@ -1,7 +1,8 @@
-import { SERVICES } from '@/data/content';
+import { SERVICE_CATEGORIES } from '@/data/services';
 
 export default function Marquee() {
-  const items = [...SERVICES.map((service) => service.name), ...SERVICES.map((service) => service.name)];
+  const names = SERVICE_CATEGORIES.map((category) => category.name);
+  const items = [...names, ...names];
 
   return (
     <div className="marquee-band overflow-hidden border-y border-white/10 bg-midnight py-6" aria-hidden="true">
