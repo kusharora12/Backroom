@@ -196,7 +196,7 @@ export const PROJECT_PLACEHOLDERS = [
       'Placeholder case study for a digital experience. Replace with the real project summary when portfolio material is available.',
     services: ['Website Design and Development', 'Digital Strategy'],
     image:
-      'https://images.pexels.com/photos/9408405/pexels-photo-9408405.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+      '/1_bca30823-bf5f-4d3f-86e4-38a0548d4c57_400x.webp',
     alt: 'Geometric concrete building facade with light and shadow',
     aspect: 'aspect-[1/1]',
     span: 'md:col-span-5',
