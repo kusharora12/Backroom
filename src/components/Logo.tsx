@@ -6,7 +6,7 @@ export default function Logo({ className = '' }: LogoProps) {
   return (
     <a href="#top" aria-label="BACKROOM STUDIO CO. home" className={`inline-flex shrink-0 items-center ${className}`}>
       <img
-        src="/BACKROOM%20STUDIO%20CO.%20Logo%20(1).png"
+        src="/Backroom%20Studio%20Co.%20Logo.png"
         alt="BACKROOM STUDIO CO."
         width={2048}
         height={682}
