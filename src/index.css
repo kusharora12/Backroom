@@ -138,15 +138,35 @@
 }
 
 .kinetic-letter {
+  position: relative;
   display: inline-block;
-  transition:
-    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
-    color 400ms ease;
 }
 
-.kinetic-letter:hover {
-  transform: skewX(-10deg);
+.kinetic-letter::after {
+  content: attr(data-char);
+  position: absolute;
+  inset: 0;
   color: #35b5a3;
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 600ms cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.kinetic-letter:hover::after {
+  clip-path: inset(0 0 0 0);
+}
+
+.hero-square {
+  animation: hero-float 9s ease-in-out infinite;
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -24px, 0) rotate(6deg);
+  }
 }
 
 .has-custom-cursor,
@@ -226,9 +246,14 @@
   .fade-up,
   .scroll-cue,
   .marquee-track,
+  .hero-square,
   .kinetic-letter-wrap {
     animation: none;
     transform: none;
     opacity: 1;
+  }
+
+  .kinetic-letter::after {
+    transition: none;
   }
 }

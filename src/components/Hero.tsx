@@ -3,7 +3,7 @@ import { useEffect, useRef, type CSSProperties } from 'react';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
 
 const HERO_IMAGE =
-  'https://images.pexels.com/photos/4105151/pexels-photo-4105151.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
+  'https://images.pexels.com/photos/7710074/pexels-photo-7710074.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
 
 const HEADLINE_LINES = [
   { text: 'Ordinary', color: 'text-white' },
@@ -73,7 +73,7 @@ export default function Hero() {
         >
           <img
             src={HERO_IMAGE}
-            alt="Dramatic studio portrait lit in teal against a dark background"
+            alt="Creative team collaborating on strategy around a whiteboard in a modern studio"
             width={940}
             height={650}
             fetchPriority="high"
@@ -82,10 +82,14 @@ export default function Hero() {
         </div>
       </div>
       <div className="absolute inset-0 bg-midnight/60" aria-hidden="true" />
+      <div
+        className="hero-square pointer-events-none absolute bottom-[14%] right-[10%] hidden h-44 w-44 border border-teal-light/70 md:block lg:h-60 lg:w-60"
+        aria-hidden="true"
+      />
       <div className="absolute inset-0 bg-gradient-to-b from-midnight via-transparent to-midnight" aria-hidden="true" />
 
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center px-6 text-center md:px-12">
-        <p className="fade-up eyebrow mb-8" style={{ '--line-delay': '150ms' } as CSSProperties}>
+        <p className="fade-up eyebrow mb-8 text-sm md:text-base" style={{ '--line-delay': '150ms' } as CSSProperties}>
           Independent Creative &amp; Marketing Studio
         </p>
 
@@ -102,7 +106,9 @@ export default function Hero() {
                   className="kinetic-letter-wrap"
                   style={{ '--line-delay': `${320 + (lineIndex * 8 + charIndex) * 45}ms` } as CSSProperties}
                 >
-                  <span className="kinetic-letter">{char === ' ' ? '\u00a0' : char}</span>
+                  <span className="kinetic-letter" data-char={char === ' ' ? '\u00a0' : char}>
+                    {char === ' ' ? '\u00a0' : char}
+                  </span>
                 </span>
               ))}
             </span>
