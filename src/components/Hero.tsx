@@ -3,7 +3,11 @@ import { useEffect, useRef, type CSSProperties } from 'react';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
 
 const HERO_IMAGE =
-  'https://images.pexels.com/photos/7710074/pexels-photo-7710074.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
+  'https://images.pexels.com/photos/39190706/pexels-photo-39190706.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
+const CAMERA_IMAGE =
+  'https://images.pexels.com/photos/1983035/pexels-photo-1983035.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
+const SHOOT_IMAGE =
+  'https://images.pexels.com/photos/19132436/pexels-photo-19132436.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
 
 const HEADLINE_LINES = [
   { text: 'Ordinary', color: 'text-white' },
@@ -73,7 +77,7 @@ export default function Hero() {
         >
           <img
             src={HERO_IMAGE}
-            alt="Creative team collaborating on strategy around a whiteboard in a modern studio"
+            alt="Photographer capturing a model during a fashion shoot in a studio"
             width={940}
             height={650}
             fetchPriority="high"
@@ -82,10 +86,30 @@ export default function Hero() {
         </div>
       </div>
       <div className="absolute inset-0 bg-midnight/60" aria-hidden="true" />
-      <div
-        className="hero-square pointer-events-none absolute bottom-[14%] right-[10%] hidden h-44 w-44 border border-teal-light/70 md:block lg:h-60 lg:w-60"
-        aria-hidden="true"
-      />
+      <div className="pointer-events-none absolute bottom-[12%] right-[8%] hidden h-56 w-44 md:block">
+        <div className="hero-square absolute -bottom-5 -right-5 h-56 w-44 border border-teal-light/70" aria-hidden="true" />
+        <div
+          aria-label="Behind the scenes of the shoot"
+          role="img"
+          className="group/cam pointer-events-auto absolute bottom-0 right-0 z-10 h-56 w-44 overflow-hidden bg-forest transition-[width,height] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:h-[300px] hover:w-[440px]"
+        >
+          <img
+            src={CAMERA_IMAGE}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700 group-hover/cam:opacity-0"
+          />
+          <img
+            src={SHOOT_IMAGE}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full scale-110 object-cover opacity-0 transition-[opacity,transform] duration-700 ease-out group-hover/cam:scale-100 group-hover/cam:opacity-100"
+          />
+          <span className="absolute bottom-3 left-3 bg-midnight/70 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-white">
+            Behind the scenes
+          </span>
+        </div>
+      </div>
       <div className="absolute inset-0 bg-gradient-to-b from-midnight via-transparent to-midnight" aria-hidden="true" />
 
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center px-6 text-center md:px-12">
