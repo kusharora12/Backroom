@@ -35,34 +35,35 @@ export default function StudioIntro() {
             </div>
           </Reveal>
 
-          <Reveal className="md:col-span-4 md:col-start-8 md:self-end" delay={250}>
+          <div className="md:col-span-4 md:col-start-8 md:self-end">
             <ScrollText
-              text="We're an independent creative and marketing studio bringing strategy, creativity and execution together. From building distinctive brands to creating digital experiences, we help businesses make a lasting impression."
+              text="We're an independent creative and marketing studio bringing *strategy, *creativity and *execution together. From building distinctive brands to creating digital experiences, we help businesses make a *lasting impression."
               rgb="8,10,11"
+              accentRgb="0,127,115"
               mutedAlpha={0.2}
               className="text-lg leading-[1.5] md:text-xl"
             />
-          </Reveal>
+          </div>
         </div>
 
         <div className="mt-24 grid gap-6 md:mt-32 md:grid-cols-3">
           {STUDIO_PILLARS.map((pillar, index) => {
             const Icon = pillar.icon;
             return (
-              <Reveal
-                key={pillar.title}
-                delay={index * 120}
-                className="group border border-midnight/15 p-10 transition-colors duration-500 hover:border-midnight hover:bg-midnight md:p-12"
-              >
-                <span className="flex h-12 w-12 items-center justify-center bg-teal transition-transform duration-500 group-hover:rotate-12">
-                  <Icon className="h-5 w-5 text-white" aria-hidden="true" />
-                </span>
-                <h3 className="mt-10 font-display text-[32px] font-bold uppercase leading-[1.2] text-midnight transition-colors duration-500 group-hover:text-white">
-                  {pillar.title}
-                </h3>
-                <p className="mt-4 text-base leading-[1.5] text-midnight/75 transition-colors duration-500 group-hover:text-white/75">
-                  {pillar.description}
-                </p>
+              <Reveal key={pillar.title} delay={index * 120} className="h-full">
+                <div className="group relative h-full overflow-hidden border border-midnight/15 p-10 transition-colors duration-500 hover:border-teal md:p-12">
+                  <span
+                    className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-teal transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
+                    aria-hidden="true"
+                  />
+                  <span className="flex h-12 w-12 items-center justify-center bg-teal">
+                    <Icon className="h-5 w-5 text-white" aria-hidden="true" />
+                  </span>
+                  <h3 className="mt-10 font-display text-[32px] font-bold uppercase leading-[1.2] text-midnight transition-colors duration-500 group-hover:text-teal-dark">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-4 text-base leading-[1.5] text-midnight/75">{pillar.description}</p>
+                </div>
               </Reveal>
             );
           })}

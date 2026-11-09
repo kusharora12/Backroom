@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { ArrowUpRight, Plus } from 'lucide-react';
+import { ArrowUpRight, Minus, Plus } from 'lucide-react';
 import Reveal from '@/components/Reveal';
+import ScrollText from '@/components/ScrollText';
 import { WHATSAPP_URL } from '@/data/content';
 import { SERVICE_CATEGORIES } from '@/data/services';
 
@@ -20,10 +21,13 @@ export default function Services() {
             </h2>
           </Reveal>
           <Reveal className="md:col-span-4 md:col-start-9" delay={150}>
-            <p className="text-lg leading-[1.5] text-white/75">
-              From building brands and designing digital experiences to driving growth through marketing, content and
-              technology, we bring different creative disciplines together to help businesses move forward.
-            </p>
+            <ScrollText
+              text="From building brands and designing digital experiences to driving growth through *marketing, *content and *technology, we bring different creative disciplines together to help businesses move forward."
+              rgb="255,255,255"
+              accentRgb="53,181,163"
+              mutedAlpha={0.2}
+              className="text-lg leading-[1.5]"
+            />
           </Reveal>
         </div>
 
@@ -105,16 +109,27 @@ export default function Services() {
                             </li>
                           ))}
                         </ul>
-                        <a
-                          href={WHATSAPP_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          tabIndex={isOpen ? 0 : -1}
-                          className="group/cta btn-primary mt-12"
-                        >
-                          Let&apos;s Talk
-                          <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" aria-hidden="true" />
-                        </a>
+                        <div className="mt-12 flex flex-wrap items-center gap-4">
+                          <a
+                            href={WHATSAPP_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            tabIndex={isOpen ? 0 : -1}
+                            className="group/cta btn-primary"
+                          >
+                            Let&apos;s Talk
+                            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" aria-hidden="true" />
+                          </a>
+                          <button
+                            type="button"
+                            tabIndex={isOpen ? 0 : -1}
+                            onClick={() => setOpenIndex(null)}
+                            className="group/close btn-ghost"
+                          >
+                            Collapse
+                            <Minus className="h-4 w-4 transition-transform duration-300 group-hover/close:rotate-90" aria-hidden="true" />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -3,24 +3,28 @@ import { useEffect, useRef } from 'react';
 type ScrollTextProps = {
   text: string;
   rgb: string;
+  accentRgb?: string;
   mutedAlpha?: number;
   className?: string;
 };
 
 const clamp = (value: number) => Math.min(Math.max(value, 0), 1);
 
-export default function ScrollText({ text, rgb, mutedAlpha = 0.2, className = '' }: ScrollTextProps) {
+export default function ScrollText({ text, rgb, accentRgb, mutedAlpha = 0.2, className = '' }: ScrollTextProps) {
   const ref = useRef<HTMLParagraphElement>(null);
-  const words = text.split(' ');
+  const words = text.split(' ').map((word) =>
+    word.startsWith('*') ? { text: word.slice(1), accent: true } : { text: word, accent: false }
+  );
 
   useEffect(() => {
     const container = ref.current;
     if (!container) return;
     const spans = Array.from(container.querySelectorAll<HTMLSpanElement>('[data-word]'));
+    const colors = spans.map((span) => (span.dataset.accent === 'true' ? accentRgb ?? rgb : rgb));
 
     const paint = (alphaFor: (index: number) => number) => {
       spans.forEach((span, index) => {
-        span.style.color = `rgba(${rgb}, ${alphaFor(index).toFixed(3)})`;
+        span.style.color = `rgba(${colors[index]}, ${alphaFor(index).toFixed(3)})`;
       });
     };
 
@@ -54,13 +58,13 @@ export default function ScrollText({ text, rgb, mutedAlpha = 0.2, className = ''
       window.removeEventListener('scroll', requestUpdate);
       window.removeEventListener('resize', requestUpdate);
     };
-  }, [text, rgb, mutedAlpha]);
+  }, [text, rgb, accentRgb, mutedAlpha]);
 
   return (
     <p ref={ref} className={className}>
       {words.map((word, index) => (
-        <span key={`${word}-${index}`} data-word>
-          {word}
+        <span key={`${word.text}-${index}`} data-word data-accent={word.accent ? 'true' : undefined}>
+          {word.text}
           {index < words.length - 1 ? ' ' : ''}
         </span>
       ))}

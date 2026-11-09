@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import Reveal from '@/components/Reveal';
+import { WHATSAPP_URL } from '@/data/content';
 
 export default function CallToAction() {
   return (
@@ -21,7 +22,9 @@ export default function CallToAction() {
         </Reveal>
         <Reveal delay={150}>
           <a
-            href="#contact"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex items-center gap-4 bg-midnight px-8 py-5 font-sans text-sm font-medium uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:bg-white hover:text-midnight"
           >
             Start a project
