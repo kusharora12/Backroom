@@ -1,6 +1,9 @@
-import { useEffect, useRef, type CSSProperties } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties } from 'react';
 
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import type { HeroPointer } from '@/components/HeroScene';
+
+const HeroScene = lazy(() => import('@/components/HeroScene'));
 
 const HERO_IMAGE =
   'https://images.pexels.com/photos/39190706/pexels-photo-39190706.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
@@ -8,6 +11,15 @@ const CAMERA_IMAGE =
   'https://images.pexels.com/photos/1983035/pexels-photo-1983035.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
 const SHOOT_IMAGE =
   'https://images.pexels.com/photos/19132436/pexels-photo-19132436.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
+
+function supportsWebGL() {
+  try {
+    const canvas = document.createElement('canvas');
+    return Boolean(canvas.getContext('webgl2') || canvas.getContext('webgl'));
+  } catch {
+    return false;
+  }
+}
 
 const HEADLINE_LINES = [
   { text: 'Ordinary', color: 'text-white' },
@@ -17,6 +29,10 @@ const HEADLINE_LINES = [
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const pointerRef = useRef<HeroPointer>({ x: 0, y: 0, active: false });
+  const [show3d] = useState(
+    () => supportsWebGL() && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -41,6 +57,7 @@ export default function Hero() {
         x: (event.clientX - rect.left) / rect.width - 0.5,
         y: (event.clientY - rect.top) / rect.height - 0.5,
       };
+      pointerRef.current = { x: pointer.x, y: -pointer.y, active: true };
       if (pointerFrame) return;
       pointerFrame = requestAnimationFrame(() => {
         pointerFrame = 0;
@@ -49,14 +66,20 @@ export default function Hero() {
       });
     };
 
+    const onPointerLeave = () => {
+      pointerRef.current = { ...pointerRef.current, active: false };
+    };
+
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     section.addEventListener('pointermove', onPointerMove);
+    section.addEventListener('pointerleave', onPointerLeave);
     return () => {
       cancelAnimationFrame(scrollFrame);
       cancelAnimationFrame(pointerFrame);
       window.removeEventListener('scroll', onScroll);
       section.removeEventListener('pointermove', onPointerMove);
+      section.removeEventListener('pointerleave', onPointerLeave);
     };
   }, []);
 
@@ -86,6 +109,13 @@ export default function Hero() {
         </div>
       </div>
       <div className="absolute inset-0 bg-midnight/60" aria-hidden="true" />
+      {show3d && (
+        <div className="hero-canvas pointer-events-none absolute inset-0" aria-hidden="true">
+          <Suspense fallback={null}>
+            <HeroScene pointerRef={pointerRef} />
+          </Suspense>
+        </div>
+      )}
       <div
         className="pointer-events-none absolute bottom-[12%] right-[8%] hidden h-56 w-44 transition-transform duration-500 ease-out md:block"
         style={{ transform: 'perspective(900px) rotateX(calc(var(--my, 0) * -10deg)) rotateY(calc(var(--mx, 0) * 12deg))' }}

@@ -1,84 +1,98 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { ArrowUpRight, X } from 'lucide-react';
-import Reveal from '@/components/Reveal';
 import { PROJECT_PLACEHOLDERS } from '@/data/content';
+import { usePinnedHorizontalScroll } from '@/hooks/usePinnedHorizontalScroll';
 
 type Project = (typeof PROJECT_PLACEHOLDERS)[number];
 
+const CARD_LAYOUTS = [
+  'w-[84vw] md:w-[46vw] md:min-w-[580px] md:mt-0',
+  'w-[72vw] md:w-[24vw] md:min-w-[340px] md:mt-24',
+  'w-[84vw] md:w-[34vw] md:min-w-[460px] md:mt-10',
+  'w-[76vw] md:w-[28vw] md:min-w-[380px] md:mt-40',
+];
+
 export default function SelectedWork() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState<Project | null>(null);
+  usePinnedHorizontalScroll(sectionRef, trackRef);
 
   return (
-    <section id="work" aria-labelledby="work-title" className="bg-teal-dark py-28 text-white md:py-36">
-      <div className="mx-auto max-w-[1440px] px-6 md:px-12">
+    <section
+      ref={sectionRef}
+      id="work"
+      aria-labelledby="work-title"
+      className="overflow-hidden bg-teal-dark py-28 text-white motion-safe:md:flex motion-safe:md:h-screen motion-safe:md:flex-col motion-safe:md:justify-center motion-safe:md:py-0"
+    >
+      <div className="mx-auto w-full max-w-[1440px] px-6 md:px-12">
         <div className="grid gap-8 md:grid-cols-12 md:items-end">
-          <Reveal className="md:col-span-7">
+          <div className="md:col-span-7">
             <p className="font-mono text-[12px] uppercase tracking-[0.18em] text-teal-light">02 &mdash; Work</p>
-            <h2 id="work-title" className="display mt-6 text-[clamp(48px,9vw,144px)] text-white">
+            <h2 id="work-title" className="display mt-6 text-[clamp(48px,8vw,128px)] text-white">
               Selected work.
             </h2>
-          </Reveal>
-          <Reveal className="md:col-span-4 md:col-start-9" delay={150}>
+          </div>
+          <div className="md:col-span-4 md:col-start-9">
             <p className="text-lg leading-[1.5] text-white/85">Ideas brought to life. Brands made impossible to ignore.</p>
-            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-white/65">
-              Placeholder projects shown until approved portfolio material is supplied.
+            <p className="mt-6 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.16em] text-white/70">
+              <span>Scroll to explore</span>
+              <span className="text-teal-light">{String(PROJECT_PLACEHOLDERS.length).padStart(2, '0')} projects</span>
             </p>
-          </Reveal>
+          </div>
         </div>
       </div>
 
-      <div className="mt-16 flex items-center justify-between px-6 md:mt-20 md:px-12">
-        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/70">Swipe or scroll to explore</p>
-        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-teal-light">
-          {String(PROJECT_PLACEHOLDERS.length).padStart(2, '0')} projects
-        </span>
-      </div>
-
-      <ul className="no-scrollbar mt-6 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-6 md:gap-10 md:px-12">
+      <ul
+        ref={trackRef}
+        className="no-scrollbar mt-14 flex snap-x snap-mandatory items-start gap-6 overflow-x-auto px-6 pb-4 md:mt-16 md:gap-12 md:px-12 motion-safe:md:w-max motion-safe:md:snap-none motion-safe:md:overflow-visible md:pr-[12vw]"
+      >
         {PROJECT_PLACEHOLDERS.map((project, index) => (
-          <Reveal as="li" key={project.id} delay={index * 100} className="group w-[84vw] shrink-0 snap-start md:w-[560px]">
-            <article className="relative">
-              <div className="relative aspect-[4/5] overflow-hidden bg-forest md:aspect-[5/6]">
-                <img
-                  src={project.image}
-                  alt={project.alt}
-                  width={940}
-                  height={650}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
-                />
+          <li
+            key={project.id}
+            data-hscroll-item
+            className={`group relative shrink-0 snap-start md:h-[60vh] ${CARD_LAYOUTS[index % CARD_LAYOUTS.length]}`}
+          >
+            <article className="flex h-full flex-col">
+              <div className="relative aspect-[4/5] overflow-hidden bg-forest md:aspect-auto md:min-h-0 md:flex-1">
+                <div data-hscroll-media className="absolute inset-x-0 -inset-y-[10%]">
+                  <img
+                    src={project.image}
+                    alt={project.alt}
+                    width={940}
+                    height={650}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
+                  />
+                </div>
                 <span className="absolute left-4 top-4 bg-midnight/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-white/85">
                   Placeholder
                 </span>
                 <span className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-teal-light transition-transform duration-700 ease-out group-hover:scale-x-100" aria-hidden="true" />
               </div>
 
-              <div className="mt-6 flex items-start justify-between gap-6">
-                <div>
-                  <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-teal-light">
-                    {String(index + 1).padStart(2, '0')} / {project.category}
-                  </p>
-                  <h3 className="mt-3 font-display text-[28px] font-bold uppercase leading-[1.2] text-white md:text-[36px]">
-                    {project.title}
-                  </h3>
-                </div>
+              <div className="mt-6 overflow-hidden">
+                <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-teal-light">
+                  {String(index + 1).padStart(2, '0')} / {project.category}
+                </p>
+                <h3 data-hscroll-title className="mt-3 font-display text-[28px] font-bold uppercase leading-[1.2] text-white md:text-[36px]">
+                  {project.title}
+                </h3>
               </div>
 
               <p className="mt-4 max-w-md text-[15px] leading-[1.5] text-white/80">{project.description}</p>
-              <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-white/65">
-                {project.services.join(' · ')}
-              </p>
+              <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-white/65">{project.services.join(' · ')}</p>
 
               <button
                 type="button"
                 onClick={() => setActive(project)}
-                className="mt-6 flex items-center gap-2 border-b border-white/40 pb-1 font-sans text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:border-teal-light hover:text-teal-light"
+                className="mt-6 flex items-center gap-2 self-start border-b border-white/40 pb-1 font-sans text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:border-teal-light hover:text-teal-light"
               >
                 View project
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
               </button>
             </article>
-          </Reveal>
+          </li>
         ))}
       </ul>
 

@@ -1,57 +1,64 @@
-import { useState, type FormEvent } from 'react';
+import { useState, type ChangeEvent, type FormEvent } from 'react';
 import { ArrowUpRight, CircleAlert, Check, LoaderCircle } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import { WHATSAPP_URL } from '@/data/content';
+import { SERVICE_CATEGORIES } from '@/data/services';
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 const WEB3FORMS_ACCESS_KEY = '3b907d7d-5995-45db-86ba-5cd87333d55f';
+const CONTACT_EMAIL = 'Backroomstudioco@gmail.com';
+const OTHER_SERVICE = 'Other';
 
-const SERVICE_OPTIONS = [
-  'Brand Strategy & Identity',
-  'Creative & Design',
-  'Website Designing',
-  'SEO & Google Business Profile',
-  'Performance Marketing',
-  'Social Media Marketing & Content Shoot',
-  'WhatsApp & Email Marketing',
-  'AI Automations & Creative Production',
-  'Influencer Marketing & UGC Production',
-  'Not sure yet',
-];
-
-const BUDGET_OPTIONS = ['Under 5k', '5k to 15k', '15k to 50k', '50k plus', 'To be discussed'];
+const SERVICE_OPTIONS = [...SERVICE_CATEGORIES.map((category) => category.name), OTHER_SERVICE];
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_ALLOWED_PATTERN = /^\+?[\d\s()-]+$/;
 
 type FormValues = {
   name: string;
+  phone: string;
   email: string;
-  company: string;
+  business: string;
   service: string;
-  budget: string;
-  details: string;
+  message: string;
 };
 
 type FormErrors = Partial<Record<keyof FormValues, string>>;
 
 const EMPTY_VALUES: FormValues = {
   name: '',
+  phone: '',
   email: '',
-  company: '',
+  business: '',
   service: '',
-  budget: '',
-  details: '',
+  message: '',
 };
 
 function validate(values: FormValues): FormErrors {
   const errors: FormErrors = {};
-  if (!values.name.trim()) errors.name = 'Please tell us your name.';
-  else if (values.name.trim().length > 120) errors.name = 'Please keep your name under 120 characters.';
-  if (!values.email.trim()) errors.email = 'Please add an email address so we can reply.';
-  else if (!EMAIL_PATTERN.test(values.email.trim())) errors.email = 'Please enter a valid email address.';
-  if (values.company.trim().length > 160) errors.company = 'Please keep your company name under 160 characters.';
-  if (!values.details.trim()) errors.details = 'Tell us a little about the project.';
-  else if (values.details.trim().length > 5000) errors.details = 'Please keep your project details under 5,000 characters.';
+  const name = values.name.trim();
+  const phoneDigits = values.phone.replace(/\D/g, '');
+  const email = values.email.trim();
+  const business = values.business.trim();
+  const message = values.message.trim();
+
+  if (!name) errors.name = 'Please tell us your full name.';
+  else if (name.length > 120) errors.name = 'Please keep your name under 120 characters.';
+
+  if (!values.phone.trim()) errors.phone = 'Please add a phone number so we can reach you.';
+  else if (!PHONE_ALLOWED_PATTERN.test(values.phone.trim()) || phoneDigits.length < 7 || phoneDigits.length > 15)
+    errors.phone = 'Please enter a valid phone number, with 7 to 15 digits.';
+
+  if (!email) errors.email = 'Please add an email address so we can reply.';
+  else if (!EMAIL_PATTERN.test(email)) errors.email = 'Please enter a valid email address.';
+
+  if (!business) errors.business = 'Please tell us your business name.';
+  else if (business.length > 160) errors.business = 'Please keep your business name under 160 characters.';
+
+  if (!values.service) errors.service = 'Please choose the service you need.';
+
+  if (message.length > 5000) errors.message = 'Please keep your message under 5,000 characters.';
+
   return errors;
 }
 
@@ -63,7 +70,7 @@ export default function Contact() {
   const [status, setStatus] = useState<SubmitState>('idle');
 
   const updateField = (field: keyof FormValues) => (
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const nextValue = event.target.value;
     setValues((current) => ({ ...current, [field]: nextValue }));
@@ -72,6 +79,8 @@ export default function Contact() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (status === 'submitting') return;
+
     const nextErrors = validate(values);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
@@ -83,13 +92,13 @@ export default function Contact() {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `New enquiry from ${values.name.trim()}`,
+          subject: `New enquiry from ${values.name.trim()} (${values.business.trim()})`,
           name: values.name.trim(),
+          phone: values.phone.trim(),
           email: values.email.trim(),
-          company: values.company.trim() || 'Not provided',
-          service: values.service || 'Not specified',
-          budget: values.budget || 'Not specified',
-          message: values.details.trim(),
+          business_name: values.business.trim(),
+          service_required: values.service,
+          message: values.message.trim() || 'No message provided',
         }),
       });
       const result: { success?: boolean } = await response.json();
@@ -135,10 +144,10 @@ export default function Contact() {
               <ArrowUpRight className="h-6 w-6 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
             </a>
             <a
-              href="mailto:backroomstudio@gmail.com"
+              href={`mailto:${CONTACT_EMAIL}`}
               className="group flex items-center justify-between border-b border-white/15 py-6 font-display text-2xl font-bold uppercase text-white transition-colors duration-300 hover:text-teal-light"
             >
-              backroomstudio@gmail.com
+              {CONTACT_EMAIL}
               <ArrowUpRight className="h-6 w-6 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
             </a>
           </div>
@@ -166,7 +175,7 @@ export default function Contact() {
             <form noValidate onSubmit={handleSubmit} className="grid gap-8 sm:grid-cols-2" aria-describedby={status === 'error' ? 'form-error' : undefined}>
               <div>
                 <label htmlFor="name" className={labelClass}>
-                  Name <span className="text-teal-light">*</span>
+                  Full name <span className="text-teal-light">*</span>
                 </label>
                 <input
                   id="name"
@@ -177,14 +186,33 @@ export default function Contact() {
                   aria-invalid={Boolean(errors.name)}
                   aria-describedby={errors.name ? 'name-error' : undefined}
                   className={inputClass('name')}
-                  placeholder="Your name"
+                  placeholder="Your full name"
                 />
                 <FieldError id="name-error" message={errors.name} />
               </div>
 
               <div>
+                <label htmlFor="phone" className={labelClass}>
+                  Phone number <span className="text-teal-light">*</span>
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  value={values.phone}
+                  onChange={updateField('phone')}
+                  aria-invalid={Boolean(errors.phone)}
+                  aria-describedby={errors.phone ? 'phone-error' : undefined}
+                  className={inputClass('phone')}
+                  placeholder="+91 98765 43210"
+                />
+                <FieldError id="phone-error" message={errors.phone} />
+              </div>
+
+              <div>
                 <label htmlFor="email" className={labelClass}>
-                  Email <span className="text-teal-light">*</span>
+                  Email address <span className="text-teal-light">*</span>
                 </label>
                 <input
                   id="email"
@@ -202,32 +230,34 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="company" className={labelClass}>
-                  Company
+                <label htmlFor="business" className={labelClass}>
+                  Business name <span className="text-teal-light">*</span>
                 </label>
                 <input
-                  id="company"
-                  name="company"
+                  id="business"
+                  name="business"
                   autoComplete="organization"
-                  value={values.company}
-                  onChange={updateField('company')}
-                  aria-invalid={Boolean(errors.company)}
-                  aria-describedby={errors.company ? 'company-error' : undefined}
-                  className={inputClass('company')}
-                  placeholder="Company name"
+                  value={values.business}
+                  onChange={updateField('business')}
+                  aria-invalid={Boolean(errors.business)}
+                  aria-describedby={errors.business ? 'business-error' : undefined}
+                  className={inputClass('business')}
+                  placeholder="Your business name"
                 />
-                <FieldError id="company-error" message={errors.company} />
+                <FieldError id="business-error" message={errors.business} />
               </div>
 
-              <div>
+              <div className="sm:col-span-2">
                 <label htmlFor="service" className={labelClass}>
-                  Service required
+                  Service required <span className="text-teal-light">*</span>
                 </label>
                 <select
                   id="service"
                   name="service"
                   value={values.service}
                   onChange={updateField('service')}
+                  aria-invalid={Boolean(errors.service)}
+                  aria-describedby={errors.service ? 'service-error' : undefined}
                   className={`${inputClass('service')} appearance-none bg-forest`}
                 >
                   <option value="">Select a service</option>
@@ -237,53 +267,25 @@ export default function Contact() {
                     </option>
                   ))}
                 </select>
+                <FieldError id="service-error" message={errors.service} />
               </div>
 
-              <fieldset className="sm:col-span-2">
-                <legend className={labelClass}>Project budget</legend>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {BUDGET_OPTIONS.map((option) => {
-                    const selected = values.budget === option;
-                    return (
-                      <label
-                        key={option}
-                        className={`cursor-pointer border px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.1em] transition-colors duration-300 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-teal-light ${
-                          selected
-                            ? 'border-teal-light bg-teal text-white'
-                            : 'border-white/25 text-white/75 hover:border-white/60 hover:text-white'
-                        }`}
-                      >
-                        <input
-                          type="radio"
-                          name="budget"
-                          value={option}
-                          checked={selected}
-                          onChange={updateField('budget')}
-                          className="sr-only"
-                        />
-                        {option}
-                      </label>
-                    );
-                  })}
-                </div>
-              </fieldset>
-
               <div className="sm:col-span-2">
-                <label htmlFor="details" className={labelClass}>
-                  Project details <span className="text-teal-light">*</span>
+                <label htmlFor="message" className={labelClass}>
+                  Message <span className="text-white/40">(optional)</span>
                 </label>
                 <textarea
-                  id="details"
-                  name="details"
+                  id="message"
+                  name="message"
                   rows={5}
-                  value={values.details}
-                  onChange={updateField('details')}
-                  aria-invalid={Boolean(errors.details)}
-                  aria-describedby={errors.details ? 'details-error' : undefined}
-                  className={`${inputClass('details')} resize-y`}
-                  placeholder="What are you building, what is getting in the way, and what would success look like?"
+                  value={values.message}
+                  onChange={updateField('message')}
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={errors.message ? 'message-error' : undefined}
+                  className={`${inputClass('message')} resize-y`}
+                  placeholder="What are you building, and what would success look like?"
                 />
-                <FieldError id="details-error" message={errors.details} />
+                <FieldError id="message-error" message={errors.message} />
               </div>
 
               <div className="sm:col-span-2 flex flex-col gap-6">
