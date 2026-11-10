@@ -1,22 +1,20 @@
 import Navigation from '@/components/Navigation';
 import CustomCursor from '@/components/CustomCursor';
 import Hero from '@/components/Hero';
-import Marquee from '@/components/Marquee';
-import StudioIntro from '@/components/StudioIntro';
+import BrandWall from '@/components/BrandWall';
 import SelectedWork from '@/components/SelectedWork';
 import Services from '@/components/Services';
-import About from '@/components/About';
-import WhyBackroom from '@/components/WhyBackroom';
 import Process from '@/components/Process';
+import About from '@/components/About';
+import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
-import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 
 function App() {
   return (
     <>
       <a
-        href="#studio"
+        href="#brands"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:bg-teal focus:px-4 focus:py-3 focus:text-white"
       >
         Skip to content
@@ -25,15 +23,13 @@ function App() {
       <Navigation />
       <main>
         <Hero />
-        <Marquee />
-        <StudioIntro />
+        <BrandWall />
         <SelectedWork />
         <Services />
-        <About />
-        <WhyBackroom />
         <Process />
+        <About />
+        <FAQ />
         <Contact />
-        <CallToAction />
       </main>
       <Footer />
     </>

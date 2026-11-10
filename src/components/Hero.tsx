@@ -86,7 +86,10 @@ export default function Hero() {
         </div>
       </div>
       <div className="absolute inset-0 bg-midnight/60" aria-hidden="true" />
-      <div className="pointer-events-none absolute bottom-[12%] right-[8%] hidden h-56 w-44 md:block">
+      <div
+        className="pointer-events-none absolute bottom-[12%] right-[8%] hidden h-56 w-44 transition-transform duration-500 ease-out md:block"
+        style={{ transform: 'perspective(900px) rotateX(calc(var(--my, 0) * -10deg)) rotateY(calc(var(--mx, 0) * 12deg))' }}
+      >
         <div className="hero-square absolute -bottom-5 -right-5 h-56 w-44 border border-teal-light/70" aria-hidden="true" />
         <div
           aria-label="Behind the scenes of the shoot"
@@ -143,7 +146,7 @@ export default function Hero() {
           className="fade-up mt-10 max-w-xl text-base leading-[1.5] text-white/80 md:mt-12 md:text-lg"
           style={{ '--line-delay': '700ms' } as CSSProperties}
         >
-          We build distinctive brands, create bold experiences and make ideas impossible to ignore.
+          Big ideas. Bold identities. Work that refuses to blend in.
         </p>
 
         <div className="fade-up mt-10" style={{ '--line-delay': '850ms' } as CSSProperties}>
@@ -161,8 +164,8 @@ export default function Hero() {
             Behind the scenes. Ahead of the curve.
           </p>
           <a
-            href="#studio"
-            aria-label="Scroll to studio introduction"
+            href="#brands"
+            aria-label="Scroll to brands"
             className="group hidden items-center gap-3 font-mono text-[11px] uppercase tracking-[0.16em] text-white/70 transition-colors hover:text-teal-light sm:flex"
           >
             Scroll

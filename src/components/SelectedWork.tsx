@@ -5,98 +5,82 @@ import { PROJECT_PLACEHOLDERS } from '@/data/content';
 
 type Project = (typeof PROJECT_PLACEHOLDERS)[number];
 
-const FILTERS = ['All', ...Array.from(new Set(PROJECT_PLACEHOLDERS.map((project) => project.category)))];
-
 export default function SelectedWork() {
   const [active, setActive] = useState<Project | null>(null);
-  const [filter, setFilter] = useState('All');
 
   return (
-    <section id="work" aria-labelledby="work-title" className="bg-midnight py-28 md:py-40">
+    <section id="work" aria-labelledby="work-title" className="bg-teal-dark py-28 text-white md:py-36">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
         <div className="grid gap-8 md:grid-cols-12 md:items-end">
           <Reveal className="md:col-span-7">
             <p className="font-mono text-[12px] uppercase tracking-[0.18em] text-teal-light">02 &mdash; Work</p>
             <h2 id="work-title" className="display mt-6 text-[clamp(48px,9vw,144px)] text-white">
-              Selected Work.
+              Selected work.
             </h2>
           </Reveal>
           <Reveal className="md:col-span-4 md:col-start-9" delay={150}>
-            <p className="text-lg leading-[1.5] text-white/75">
-              Ideas brought to life. Brands made impossible to ignore.
-            </p>
-            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-white/50">
+            <p className="text-lg leading-[1.5] text-white/85">Ideas brought to life. Brands made impossible to ignore.</p>
+            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-white/65">
               Placeholder projects shown until approved portfolio material is supplied.
             </p>
           </Reveal>
         </div>
-
-        <div role="group" aria-label="Filter projects" className="mt-16 flex flex-wrap gap-2 md:mt-20">
-          {FILTERS.map((option) => {
-            const selected = filter === option;
-            return (
-              <button
-                key={option}
-                type="button"
-                aria-pressed={selected}
-                onClick={() => setFilter(option)}
-                className={`border px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors duration-300 ${
-                  selected ? 'border-teal-light bg-teal text-white' : 'border-white/25 text-white/75 hover:border-white/60 hover:text-white'
-                }`}
-              >
-                {option}
-              </button>
-            );
-          })}
-        </div>
-
-        <ul className="mt-12 grid gap-16 md:mt-16 md:grid-cols-12 md:gap-x-10 md:gap-y-24">
-          {PROJECT_PLACEHOLDERS.map((project, index) => (
-            <Reveal as="li" key={project.id} className={`group ${project.span} ${project.offset}`} delay={index * 80}>
-              <article>
-                <div className={`relative overflow-hidden bg-forest transition-all duration-700 ${project.aspect} ${filter === 'All' || filter === project.category ? '' : 'opacity-25 grayscale'}`}>
-                  <img
-                    src={project.image}
-                    alt={project.alt}
-                    width={940}
-                    height={650}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
-                  />
-                  <span className="absolute left-4 top-4 bg-midnight/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-white/80">
-                    Placeholder
-                  </span>
-                </div>
-
-                <div className="mt-6 flex items-start justify-between gap-6">
-                  <div>
-                    <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-white/60 transition-colors duration-300 group-hover:text-teal-light">
-                      {String(index + 1).padStart(2, '0')} / {project.category}
-                    </p>
-                    <h3 className="mt-3 font-display text-[28px] font-bold uppercase leading-[1.2] text-white transition-transform duration-500 group-hover:translate-x-2 md:text-[36px]">
-                      {project.title}
-                    </h3>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setActive(project)}
-                    className="mt-2 flex shrink-0 items-center gap-2 border-b border-white/30 pb-1 font-sans text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:border-teal-light hover:text-teal-light"
-                  >
-                    View project
-                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
-                  </button>
-                </div>
-
-                <div className="mt-4 grid grid-rows-[0fr] transition-[grid-template-rows] duration-700 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
-                  <div className="overflow-hidden">
-                    <p className="max-w-md pb-1 text-[15px] leading-[1.5] text-white/70">{project.description}</p>
-                  </div>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </ul>
       </div>
+
+      <div className="mt-16 flex items-center justify-between px-6 md:mt-20 md:px-12">
+        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/70">Swipe or scroll to explore</p>
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-teal-light">
+          {String(PROJECT_PLACEHOLDERS.length).padStart(2, '0')} projects
+        </span>
+      </div>
+
+      <ul className="no-scrollbar mt-6 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-6 md:gap-10 md:px-12">
+        {PROJECT_PLACEHOLDERS.map((project, index) => (
+          <Reveal as="li" key={project.id} delay={index * 100} className="group w-[84vw] shrink-0 snap-start md:w-[560px]">
+            <article className="relative">
+              <div className="relative aspect-[4/5] overflow-hidden bg-forest md:aspect-[5/6]">
+                <img
+                  src={project.image}
+                  alt={project.alt}
+                  width={940}
+                  height={650}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
+                />
+                <span className="absolute left-4 top-4 bg-midnight/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-white/85">
+                  Placeholder
+                </span>
+                <span className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-teal-light transition-transform duration-700 ease-out group-hover:scale-x-100" aria-hidden="true" />
+              </div>
+
+              <div className="mt-6 flex items-start justify-between gap-6">
+                <div>
+                  <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-teal-light">
+                    {String(index + 1).padStart(2, '0')} / {project.category}
+                  </p>
+                  <h3 className="mt-3 font-display text-[28px] font-bold uppercase leading-[1.2] text-white md:text-[36px]">
+                    {project.title}
+                  </h3>
+                </div>
+              </div>
+
+              <p className="mt-4 max-w-md text-[15px] leading-[1.5] text-white/80">{project.description}</p>
+              <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-white/65">
+                {project.services.join(' · ')}
+              </p>
+
+              <button
+                type="button"
+                onClick={() => setActive(project)}
+                className="mt-6 flex items-center gap-2 border-b border-white/40 pb-1 font-sans text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:border-teal-light hover:text-teal-light"
+              >
+                View project
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+              </button>
+            </article>
+          </Reveal>
+        ))}
+      </ul>
 
       {active && <ProjectDialog project={active} onClose={() => setActive(null)} />}
     </section>

@@ -1,10 +1,10 @@
 import { useState, type FormEvent } from 'react';
-import { CircleAlert, Check, LoaderCircle } from 'lucide-react';
+import { ArrowUpRight, CircleAlert, Check, LoaderCircle } from 'lucide-react';
 import Reveal from '@/components/Reveal';
-import ContactFaq from '@/components/ContactFaq';
+import { WHATSAPP_URL } from '@/data/content';
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
-const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY';
+const WEB3FORMS_ACCESS_KEY = '3b907d7d-5995-45db-86ba-5cd87333d55f';
 
 const SERVICE_OPTIONS = [
   'Brand Strategy & Identity',
@@ -110,7 +110,7 @@ export default function Contact() {
   const labelClass = 'mb-1 block font-mono text-[11px] uppercase tracking-[0.14em] text-white/60';
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="relative overflow-hidden bg-forest py-28 md:py-40">
+    <section id="contact" aria-labelledby="contact-title" className="relative overflow-hidden bg-midnight py-28 md:py-40">
       <div
         className="pointer-events-none absolute -bottom-40 -left-40 h-[480px] w-[480px] rounded-full bg-teal/20 blur-[140px]"
         aria-hidden="true"
@@ -124,7 +124,24 @@ export default function Contact() {
           <p className="mt-8 max-w-md text-lg leading-[1.5] text-white/75">
             Tell us what you&apos;re working on. Let&apos;s make something meaningful.
           </p>
-          <ContactFaq />
+          <div className="mt-12 flex flex-col border-t border-white/15">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between border-b border-white/15 py-6 font-display text-2xl font-bold uppercase text-white transition-colors duration-300 hover:text-teal-light"
+            >
+              WhatsApp us
+              <ArrowUpRight className="h-6 w-6 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+            </a>
+            <a
+              href="mailto:backroomstudio@gmail.com"
+              className="group flex items-center justify-between border-b border-white/15 py-6 font-display text-2xl font-bold uppercase text-white transition-colors duration-300 hover:text-teal-light"
+            >
+              backroomstudio@gmail.com
+              <ArrowUpRight className="h-6 w-6 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+            </a>
+          </div>
         </Reveal>
 
         <Reveal className="md:col-span-6 md:col-start-7" delay={150}>

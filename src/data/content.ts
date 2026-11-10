@@ -35,67 +35,54 @@ export const STUDIO_PILLARS: {
   },
 ];
 
-export const PRINCIPLES = [
-  'THINK BEFORE YOU CREATE.',
-  'IDEAS BEFORE EXECUTION.',
-  'CREATIVE WITH PURPOSE.',
-  'STRATEGY MEETS CULTURE.',
-  'EXECUTION THAT MATTERS.',
-];
-
 export const PROCESS_STEPS = [
-  {
-    number: '01',
-    title: 'DISCOVER',
-    description: 'Understanding the business, audience and opportunity.',
-    outcome: 'Clear goals, audience insight and a shared view of the challenge.',
-  },
-  {
-    number: '02',
-    title: 'STRATEGIZE',
-    description: 'Building a clear direction and actionable plan.',
-    outcome: 'A written plan with priorities, messaging and success measures.',
-  },
-  {
-    number: '03',
-    title: 'CREATE',
-    description: 'Turning ideas into distinctive creative work.',
-    outcome: 'Concepts developed into finished, on-brand creative ready for review.',
-  },
-  {
-    number: '04',
-    title: 'EXECUTE',
-    description: 'Bringing the strategy to life across relevant channels.',
-    outcome: 'Campaigns, websites and content launched and managed across channels.',
-  },
-  {
-    number: '05',
-    title: 'OPTIMIZE',
-    description: 'Measuring performance, learning and improving.',
-    outcome: 'Regular reporting and refinements that build on what is working.',
-  },
+  { number: '01', title: 'DISCOVER', description: 'Understand the business, its audience and its challenges.' },
+  { number: '02', title: 'STRATEGISE', description: 'Develop the creative direction and a clear plan.' },
+  { number: '03', title: 'CREATE', description: 'Turn ideas into distinctive identities, experiences and campaigns.' },
+  { number: '04', title: 'EXECUTE', description: 'Bring the strategy to life through design, marketing and technology.' },
+  { number: '05', title: 'EVOLVE', description: 'Measure, improve and continuously build on the work.' },
 ];
 
 export const FAQS = [
   {
-    question: 'What happens after I get in touch?',
+    question: 'So, what exactly does BACKROOM do?',
     answer:
-      'We read every enquiry personally and reply by email to arrange a short call about your goals, timing and budget.',
+      'Basically, we make brands look, feel and perform better. We combine strategy, creative direction, design, marketing and technology so your business shows up with a clear identity and work that gets noticed.',
   },
   {
-    question: 'Do you work with small businesses as well as larger brands?',
+    question: 'Can you handle everything under one roof?',
     answer:
-      'Yes. We scope each project around the goals and resources of the business, from focused brand projects to ongoing partnerships.',
+      'Yep. From branding to websites to marketing, we have the creative side covered. Everything is planned together, so the work stays consistent across every channel.',
   },
   {
-    question: 'Do I need a full brief before contacting you?',
+    question: 'Do you work with startups and small businesses?',
     answer:
-      'No. A few sentences about what you are working on is enough. We will help shape the brief together on the first call.',
+      'Yes. We scope every project around the goals and resources of the business, whether you are just starting out or already growing.',
   },
   {
-    question: 'How is work priced?',
+    question: 'Can I hire you for just one service?',
     answer:
-      'Projects are quoted after an initial conversation, based on scope. The budget field helps us point you in the right direction.',
+      'No gatekeeping. You can work with us on a single service too, like a new website, a social media plan or a WhatsApp flow.',
+  },
+  {
+    question: 'How does the whole process work?',
+    answer:
+      'We move through five stages: Discover, Strategise, Create, Execute and Evolve. You stay involved at each step, so nothing comes as a surprise.',
+  },
+  {
+    question: 'Okay, but how much does it cost?',
+    answer:
+      'No random pricing pulled out of thin air. Every project depends on what you actually need, so we quote after a short conversation about your goals.',
+  },
+  {
+    question: 'How long does a typical project take?',
+    answer:
+      'It depends on the scope. We agree on a timeline during the first call, once we understand what needs to be made and when it is needed.',
+  },
+  {
+    question: 'How do we get started?',
+    answer:
+      'Send us a message on WhatsApp or fill in the contact form. A few sentences about what you are working on is enough to begin.',
   },
 ];
 
@@ -110,9 +97,6 @@ export const PROJECT_PLACEHOLDERS = [
     image:
       'https://images.pexels.com/photos/32275828/pexels-photo-32275828.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     alt: 'Concrete beams casting long shadows against a clear sky',
-    aspect: 'aspect-[4/5]',
-    span: 'md:col-span-7',
-    offset: '',
   },
   {
     id: 'placeholder-02',
@@ -124,9 +108,6 @@ export const PROJECT_PLACEHOLDERS = [
     image:
       'https://images.pexels.com/photos/9408405/pexels-photo-9408405.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     alt: 'Geometric concrete building facade with light and shadow',
-    aspect: 'aspect-[1/1]',
-    span: 'md:col-span-5',
-    offset: 'md:mt-32',
   },
   {
     id: 'placeholder-03',
@@ -138,9 +119,6 @@ export const PROJECT_PLACEHOLDERS = [
     image:
       'https://images.pexels.com/photos/6939228/pexels-photo-6939228.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     alt: 'Model in a leather jacket under moody studio lighting',
-    aspect: 'aspect-[4/5]',
-    span: 'md:col-span-5',
-    offset: '',
   },
   {
     id: 'placeholder-04',
@@ -152,8 +130,5 @@ export const PROJECT_PLACEHOLDERS = [
     image:
       'https://images.pexels.com/photos/3559252/pexels-photo-3559252.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     alt: 'Modern architecture with concrete pillars and dramatic shadows',
-    aspect: 'aspect-[16/10]',
-    span: 'md:col-span-7',
-    offset: 'md:mt-24',
   },
 ];

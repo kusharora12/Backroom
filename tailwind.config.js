@@ -11,6 +11,7 @@ export default {
           dark: '#075B54',
         },
         forest: '#102B28',
+        ivory: '#F6F1E7',
         cream: '#F3EDE1',
       },
       fontFamily: {
