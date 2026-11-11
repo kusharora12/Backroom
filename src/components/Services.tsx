@@ -45,13 +45,13 @@ export default function Services() {
 
       <ul
         ref={trackRef}
-        className="no-scrollbar mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 md:mt-16 md:gap-6 md:px-12 motion-safe:md:w-max motion-safe:md:snap-none motion-safe:md:overflow-visible md:pr-[10vw]"
+        className="mobile-horizontal-track no-scrollbar mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain px-6 pb-4 touch-pan-x scroll-smooth md:mt-16 md:gap-6 md:px-12 motion-safe:md:w-max motion-safe:md:snap-none motion-safe:md:overflow-visible md:pr-[10vw]"
       >
         {SERVICE_CATEGORIES.map((category, index) => (
           <li
             key={category.number}
             data-hscroll-item
-            className="relative h-[68vw] min-h-[340px] w-[80vw] shrink-0 snap-start md:h-[54vh] md:min-h-[400px] md:w-[34vw] md:min-w-[420px] md:max-w-[520px]"
+            className="relative h-[68vw] min-h-[320px] w-[82vw] max-w-[420px] shrink-0 snap-start md:h-[54vh] md:min-h-[400px] md:w-[34vw] md:min-w-[420px] md:max-w-[520px]"
           >
             <button
               type="button"

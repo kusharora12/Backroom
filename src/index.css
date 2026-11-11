@@ -83,6 +83,19 @@
     clip-path: inset(0 0 0 0);
   }
 
+  .mobile-horizontal-track {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scroll-padding-inline: 24px;
+    scrollbar-width: none;
+    touch-action: pan-x;
+    will-change: scroll-position;
+  }
+
+  .mobile-horizontal-track::-webkit-scrollbar {
+    display: none;
+  }
+
   .no-scrollbar {
     scrollbar-width: none;
   }
@@ -267,6 +280,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   html {
+    scroll-behavior: auto;
+  }
+
+  .mobile-horizontal-track {
     scroll-behavior: auto;
   }
 

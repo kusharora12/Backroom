@@ -6,10 +6,10 @@ import { usePinnedHorizontalScroll } from '@/hooks/usePinnedHorizontalScroll';
 type Project = (typeof PROJECT_PLACEHOLDERS)[number];
 
 const CARD_LAYOUTS = [
-  'w-[84vw] md:w-[46vw] md:min-w-[580px] md:mt-0',
-  'w-[72vw] md:w-[24vw] md:min-w-[340px] md:mt-24',
-  'w-[84vw] md:w-[34vw] md:min-w-[460px] md:mt-10',
-  'w-[76vw] md:w-[28vw] md:min-w-[380px] md:mt-40',
+  'w-[86vw] max-w-[440px] md:w-[46vw] md:min-w-[580px] md:mt-0',
+  'w-[78vw] max-w-[380px] md:w-[24vw] md:min-w-[340px] md:mt-24',
+  'w-[86vw] max-w-[440px] md:w-[34vw] md:min-w-[460px] md:mt-10',
+  'w-[80vw] max-w-[400px] md:w-[28vw] md:min-w-[380px] md:mt-40',
 ];
 
 export default function SelectedWork() {
@@ -45,7 +45,7 @@ export default function SelectedWork() {
 
       <ul
         ref={trackRef}
-        className="no-scrollbar mt-14 flex snap-x snap-mandatory items-start gap-6 overflow-x-auto px-6 pb-4 md:mt-16 md:gap-12 md:px-12 motion-safe:md:w-max motion-safe:md:snap-none motion-safe:md:overflow-visible md:pr-[12vw]"
+        className="mobile-horizontal-track no-scrollbar mt-14 flex snap-x snap-mandatory items-start gap-6 overflow-x-auto overscroll-x-contain px-6 pb-4 touch-pan-x scroll-smooth md:mt-16 md:gap-12 md:px-12 motion-safe:md:w-max motion-safe:md:snap-none motion-safe:md:overflow-visible md:pr-[12vw]"
       >
         {PROJECT_PLACEHOLDERS.map((project, index) => (
           <li
