@@ -3,6 +3,7 @@ import { ArrowUpRight, CircleAlert, Check, LoaderCircle } from 'lucide-react';
 import Reveal from '@/components/Reveal';
 import { WHATSAPP_URL } from '@/data/content';
 import { SERVICE_CATEGORIES } from '@/data/services';
+import { supabase } from '@/lib/supabase';
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 const WEB3FORMS_ACCESS_KEY = '3b907d7d-5995-45db-86ba-5cd87333d55f';
@@ -85,20 +86,38 @@ export default function Contact() {
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
+    const name = values.name.trim();
+    const phone = values.phone.trim();
+    const email = values.email.trim();
+    const business = values.business.trim();
+    const message = values.message.trim();
+
     setStatus('submitting');
+    const { error: saveError } = await supabase.from('contact_submissions').insert({
+      name,
+      phone,
+      email,
+      company: business,
+      service: values.service,
+      message: message || null,
+    });
+    if (saveError) {
+      setStatus('error');
+      return;
+    }
     try {
       const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `New enquiry from ${values.name.trim()} (${values.business.trim()})`,
-          name: values.name.trim(),
-          phone: values.phone.trim(),
-          email: values.email.trim(),
-          business_name: values.business.trim(),
+          subject: `New enquiry from ${name} (${business})`,
+          name,
+          phone,
+          email,
+          business_name: business,
           service_required: values.service,
-          message: values.message.trim() || 'No message provided',
+          message: message || 'No message provided',
         }),
       });
       const result: { success?: boolean } = await response.json();
