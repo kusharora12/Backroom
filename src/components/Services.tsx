@@ -13,18 +13,19 @@ type PanelStyle = {
   titlePosition: 'top' | 'bottom';
   numberSize: string;
   accent: string;
+  imageHeight: string;
 };
 
 const PANEL_STYLES: PanelStyle[] = [
-  { widthClass: 'w-[82vw] md:w-[36vw] md:min-w-[480px]', yOffset: 'md:mt-0', rotation: -1.5, tilt: 1.4, treatment: 'saturate-[0.8] contrast-110', titlePosition: 'bottom', numberSize: 'text-[clamp(64px,7vw,120px)]', accent: 'text-teal-light' },
-  { widthClass: 'w-[78vw] md:w-[28vw] md:min-w-[400px]', yOffset: 'md:mt-24', rotation: 2, tilt: 2.2, treatment: 'grayscale group-hover:grayscale-0', titlePosition: 'top', numberSize: 'text-[clamp(56px,6vw,100px)]', accent: 'text-white' },
-  { widthClass: 'w-[84vw] md:w-[32vw] md:min-w-[440px]', yOffset: 'md:mt-10', rotation: -2.5, tilt: 1.8, treatment: 'contrast-125', titlePosition: 'bottom', numberSize: 'text-[clamp(60px,6.5vw,110px)]', accent: 'text-teal-light' },
-  { widthClass: 'w-[76vw] md:w-[26vw] md:min-w-[380px]', yOffset: 'md:mt-32', rotation: 1.6, tilt: 2.6, treatment: 'grayscale-[0.7] group-hover:grayscale-0', titlePosition: 'top', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white' },
-  { widthClass: 'w-[82vw] md:w-[34vw] md:min-w-[460px]', yOffset: 'md:mt-6', rotation: -1, tilt: 1.2, treatment: 'sepia-[0.2] contrast-110', titlePosition: 'bottom', numberSize: 'text-[clamp(60px,6.5vw,112px)]', accent: 'text-teal-light' },
-  { widthClass: 'w-[78vw] md:w-[29vw] md:min-w-[410px]', yOffset: 'md:mt-28', rotation: 2.8, tilt: 2, treatment: 'grayscale group-hover:grayscale-0 contrast-105', titlePosition: 'top', numberSize: 'text-[clamp(54px,6vw,98px)]', accent: 'text-white' },
-  { widthClass: 'w-[84vw] md:w-[33vw] md:min-w-[450px]', yOffset: 'md:mt-14', rotation: -2, tilt: 1.6, treatment: 'saturate-[0.7] contrast-115', titlePosition: 'bottom', numberSize: 'text-[clamp(58px,6.2vw,104px)]', accent: 'text-teal-light' },
-  { widthClass: 'w-[80vw] md:w-[30vw] md:min-w-[420px]', yOffset: 'md:mt-20', rotation: 1.2, tilt: 2.4, treatment: 'grayscale-[0.5] group-hover:grayscale-0', titlePosition: 'top', numberSize: 'text-[clamp(56px,6vw,100px)]', accent: 'text-white' },
-  { widthClass: 'w-[82vw] md:w-[35vw] md:min-w-[470px]', yOffset: 'md:mt-4', rotation: -1.8, tilt: 1.5, treatment: 'contrast-110 saturate-[0.9]', titlePosition: 'bottom', numberSize: 'text-[clamp(62px,6.8vw,114px)]', accent: 'text-teal-light' },
+  { widthClass: 'w-[82vw] md:w-[36vw] md:min-w-[480px]', yOffset: 'md:mt-0', rotation: -1.5, tilt: 1.4, treatment: 'saturate-[0.8] contrast-110', titlePosition: 'bottom', numberSize: 'text-[clamp(56px,6vw,104px)]', accent: 'text-teal-light', imageHeight: 'h-[46svh] md:h-[56svh]' },
+  { widthClass: 'w-[78vw] md:w-[28vw] md:min-w-[400px]', yOffset: 'md:mt-6', rotation: 2, tilt: 2.2, treatment: 'grayscale group-hover:grayscale-0', titlePosition: 'top', numberSize: 'text-[clamp(48px,5.2vw,88px)]', accent: 'text-white', imageHeight: 'h-[48svh] md:h-[58svh]' },
+  { widthClass: 'w-[84vw] md:w-[32vw] md:min-w-[440px]', yOffset: 'md:mt-2', rotation: -2.5, tilt: 1.8, treatment: 'contrast-125', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.6vw,96px)]', accent: 'text-teal-light', imageHeight: 'h-[47svh] md:h-[57svh]' },
+  { widthClass: 'w-[76vw] md:w-[26vw] md:min-w-[380px]', yOffset: 'md:mt-10', rotation: 1.6, tilt: 2.6, treatment: 'grayscale-[0.7] group-hover:grayscale-0', titlePosition: 'top', numberSize: 'text-[clamp(46px,5vw,84px)]', accent: 'text-white', imageHeight: 'h-[49svh] md:h-[59svh]' },
+  { widthClass: 'w-[82vw] md:w-[34vw] md:min-w-[460px]', yOffset: 'md:mt-0', rotation: -1, tilt: 1.2, treatment: 'sepia-[0.2] contrast-110', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.6vw,96px)]', accent: 'text-teal-light', imageHeight: 'h-[46svh] md:h-[56svh]' },
+  { widthClass: 'w-[78vw] md:w-[29vw] md:min-w-[410px]', yOffset: 'md:mt-8', rotation: 2.8, tilt: 2, treatment: 'grayscale group-hover:grayscale-0 contrast-105', titlePosition: 'top', numberSize: 'text-[clamp(48px,5.2vw,88px)]', accent: 'text-white', imageHeight: 'h-[48svh] md:h-[58svh]' },
+  { widthClass: 'w-[84vw] md:w-[33vw] md:min-w-[450px]', yOffset: 'md:mt-3', rotation: -2, tilt: 1.6, treatment: 'saturate-[0.7] contrast-115', titlePosition: 'bottom', numberSize: 'text-[clamp(50px,5.4vw,92px)]', accent: 'text-teal-light', imageHeight: 'h-[47svh] md:h-[57svh]' },
+  { widthClass: 'w-[80vw] md:w-[30vw] md:min-w-[420px]', yOffset: 'md:mt-6', rotation: 1.2, tilt: 2.4, treatment: 'grayscale-[0.5] group-hover:grayscale-0', titlePosition: 'top', numberSize: 'text-[clamp(48px,5.2vw,88px)]', accent: 'text-white', imageHeight: 'h-[48svh] md:h-[58svh]' },
+  { widthClass: 'w-[82vw] md:w-[35vw] md:min-w-[470px]', yOffset: 'md:mt-0', rotation: -1.8, tilt: 1.5, treatment: 'contrast-110 saturate-[0.9]', titlePosition: 'bottom', numberSize: 'text-[clamp(54px,5.8vw,100px)]', accent: 'text-teal-light', imageHeight: 'h-[46svh] md:h-[56svh]' },
 ];
 
 export default function Services() {
@@ -50,7 +51,7 @@ export default function Services() {
       ref={sectionRef}
       id="services"
       aria-labelledby="services-title"
-      className="relative overflow-hidden bg-ivory py-24 text-midnight motion-safe:md:flex motion-safe:md:h-svh motion-safe:md:flex-col motion-safe:md:justify-center motion-safe:md:py-0"
+      className="relative overflow-hidden bg-ivory py-[5svh] text-midnight motion-safe:md:flex motion-safe:md:h-svh motion-safe:md:flex-col motion-safe:md:justify-center motion-safe:md:py-0"
     >
       <div className="mx-auto w-full max-w-[1440px] px-6 md:px-12">
         <div className="grid gap-6 md:grid-cols-12 md:items-end">
@@ -63,7 +64,7 @@ export default function Services() {
             </h2>
           </div>
           <div className="md:col-span-4 md:col-start-9">
-            <p className="max-w-sm text-base leading-[1.5] text-midnight/75">
+            <p className="hidden max-w-sm text-base leading-[1.5] text-midnight/75 md:block">
               From building brands and designing digital experiences to driving growth, every discipline is planned
               together so the work stays consistent everywhere.
             </p>
@@ -75,7 +76,7 @@ export default function Services() {
         </div>
       </div>
 
-      <div className="relative mt-12 md:mt-14">
+      <div className="relative mt-8 md:mt-10">
         <ul ref={trackRef} className="hscroll-track no-scrollbar flex w-max items-start gap-8 pl-6 pr-[14vw] md:gap-12 md:pl-12 md:pr-[12vw]">
           {SERVICE_CATEGORIES.map((category, index) => {
             const style = PANEL_STYLES[index];
@@ -97,7 +98,7 @@ export default function Services() {
                     aria-haspopup="dialog"
                     className="group relative block w-full overflow-hidden rounded-xl text-left shadow-[0_28px_70px_-30px_rgba(8,10,11,0.55)] ring-1 ring-midnight/10"
                   >
-                    <div className={`relative overflow-hidden ${index % 3 === 1 ? 'aspect-[3/4]' : 'aspect-[4/5] md:aspect-[7/6]'}`}>
+                    <div className={`relative overflow-hidden ${style.imageHeight}`}>
                       <div data-hscroll-media className="absolute inset-x-0 h-[115%] -top-[7.5%]">
                         <img
                           src={category.image}
@@ -151,7 +152,7 @@ export default function Services() {
             );
           })}
 
-          <li data-hscroll-item className="flex w-[70vw] shrink-0 items-center md:w-[30vw] md:min-w-[400px]">
+          <li data-hscroll-item className="flex w-[70vw] shrink-0 items-center md:h-[60svh] md:w-[30vw] md:min-w-[400px]">
             <div className="flex flex-col items-start gap-6 p-4 md:p-8">
               <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-teal-dark">Everything under one roof</span>
               <p className="display text-[clamp(28px,3vw,52px)] text-midnight">
@@ -176,7 +177,7 @@ export default function Services() {
         </ul>
       </div>
 
-      <div className="mx-auto mt-12 w-full max-w-[1440px] px-6 md:mt-16 md:px-12" aria-hidden="true">
+      <div className="mx-auto mt-8 w-full max-w-[1440px] px-6 md:mt-10 md:px-12" aria-hidden="true">
         <div className="h-px w-full bg-midnight/15">
           <div data-hscroll-progressbar className="h-px w-full origin-left scale-x-0 bg-teal-dark" />
         </div>

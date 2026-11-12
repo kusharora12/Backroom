@@ -103,7 +103,7 @@ type CardLayout = {
   tilt: number;
   yOffset: string;
   widthClass: string;
-  aspect: string;
+  imageHeight: string;
   imageTreatment: string;
   titleOverlay: boolean;
   mediaScale: string;
@@ -115,7 +115,7 @@ export const PROJECT_CARD_LAYOUTS: CardLayout[] = [
     tilt: 1.6,
     yOffset: 'md:mt-0',
     widthClass: 'w-[84vw] md:w-[40vw] md:min-w-[560px]',
-    aspect: 'aspect-[4/3] md:aspect-[7/5]',
+    imageHeight: 'h-[26svh] md:h-[28svh]',
     imageTreatment: 'saturate-[0.85] contrast-110',
     titleOverlay: false,
     mediaScale: 'h-[115%] -top-[7.5%]',
@@ -123,9 +123,9 @@ export const PROJECT_CARD_LAYOUTS: CardLayout[] = [
   {
     rotation: 2.5,
     tilt: 2.4,
-    yOffset: 'md:mt-32',
+    yOffset: 'md:mt-14',
     widthClass: 'w-[76vw] md:w-[27vw] md:min-w-[380px]',
-    aspect: 'aspect-[3/4]',
+    imageHeight: 'h-[30svh] md:h-[32svh]',
     imageTreatment: 'grayscale group-hover:grayscale-0',
     titleOverlay: true,
     mediaScale: 'h-[118%] -top-[9%]',
@@ -133,9 +133,9 @@ export const PROJECT_CARD_LAYOUTS: CardLayout[] = [
   {
     rotation: -1.5,
     tilt: 1.2,
-    yOffset: 'md:mt-16',
+    yOffset: 'md:mt-6',
     widthClass: 'w-[86vw] md:w-[34vw] md:min-w-[470px]',
-    aspect: 'aspect-[4/5] md:aspect-[3/4]',
+    imageHeight: 'h-[28svh] md:h-[30svh]',
     imageTreatment: 'contrast-125 saturate-50',
     titleOverlay: true,
     mediaScale: 'h-[112%] -top-[6%]',
@@ -143,9 +143,9 @@ export const PROJECT_CARD_LAYOUTS: CardLayout[] = [
   {
     rotation: 3,
     tilt: 2.8,
-    yOffset: 'md:mt-40',
+    yOffset: 'md:mt-14',
     widthClass: 'w-[80vw] md:w-[24vw] md:min-w-[340px]',
-    aspect: 'aspect-[3/4] md:aspect-[4/5]',
+    imageHeight: 'h-[30svh] md:h-[32svh]',
     imageTreatment: 'grayscale-[0.6] group-hover:grayscale-0',
     titleOverlay: false,
     mediaScale: 'h-[120%] -top-[10%]',
@@ -153,9 +153,9 @@ export const PROJECT_CARD_LAYOUTS: CardLayout[] = [
   {
     rotation: -2.6,
     tilt: 2,
-    yOffset: 'md:mt-8',
+    yOffset: 'md:mt-2',
     widthClass: 'w-[82vw] md:w-[31vw] md:min-w-[430px]',
-    aspect: 'aspect-[4/3] md:aspect-[5/4]',
+    imageHeight: 'h-[26svh] md:h-[28svh]',
     imageTreatment: 'sepia-[0.25] contrast-110',
     titleOverlay: true,
     mediaScale: 'h-[116%] -top-[8%]',
@@ -163,9 +163,9 @@ export const PROJECT_CARD_LAYOUTS: CardLayout[] = [
   {
     rotation: 1.8,
     tilt: 1.4,
-    yOffset: 'md:mt-24',
+    yOffset: 'md:mt-8',
     widthClass: 'w-[78vw] md:w-[26vw] md:min-w-[360px]',
-    aspect: 'aspect-[3/4]',
+    imageHeight: 'h-[28svh] md:h-[30svh]',
     imageTreatment: 'grayscale group-hover:grayscale-0 contrast-110',
     titleOverlay: false,
     mediaScale: 'h-[115%] -top-[7.5%]',

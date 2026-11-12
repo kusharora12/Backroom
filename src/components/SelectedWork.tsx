@@ -16,7 +16,7 @@ export default function SelectedWork() {
       ref={sectionRef}
       id="work"
       aria-labelledby="work-title"
-      className="relative overflow-hidden bg-teal-dark py-24 text-white motion-safe:md:flex motion-safe:md:h-svh motion-safe:md:flex-col motion-safe:md:justify-center motion-safe:md:py-0"
+      className="relative overflow-hidden bg-teal-dark py-[5svh] text-white motion-safe:md:flex motion-safe:md:h-svh motion-safe:md:flex-col motion-safe:md:justify-center motion-safe:md:py-0"
     >
       <div className="mx-auto w-full max-w-[1440px] px-6 md:px-12">
         <div className="grid gap-6 md:grid-cols-12 md:items-end">
@@ -27,7 +27,7 @@ export default function SelectedWork() {
             </h2>
           </div>
           <div className="md:col-span-4 md:col-start-9">
-            <p className="max-w-sm text-base leading-[1.5] text-white/85">
+            <p className="hidden max-w-sm text-base leading-[1.5] text-white/85 md:block">
               Ideas brought to life. Brands made impossible to ignore.
             </p>
             <p className="mt-5 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.16em] text-white/70">
@@ -38,7 +38,7 @@ export default function SelectedWork() {
         </div>
       </div>
 
-      <div className="relative mt-12 md:mt-14">
+      <div className="relative mt-8 md:mt-10">
         <ul
           ref={trackRef}
           className="hscroll-track no-scrollbar flex w-max items-start gap-8 pl-6 pr-[16vw] md:gap-14 md:pl-12 md:pr-[14vw]"
@@ -61,7 +61,7 @@ export default function SelectedWork() {
                   style={{ rotate: `${layout.rotation}deg` }}
                 >
                   <article className="relative overflow-hidden rounded-xl bg-forest shadow-[0_28px_70px_-30px_rgba(0,0,0,0.85)] ring-1 ring-white/10">
-                    <div className={`relative overflow-hidden ${layout.aspect}`}>
+                    <div className={`relative overflow-hidden ${layout.imageHeight}`}>
                       <div data-hscroll-media className={`absolute inset-x-0 ${layout.mediaScale}`}>
                         <img
                           src={project.image}
@@ -118,7 +118,7 @@ export default function SelectedWork() {
             );
           })}
 
-          <li data-hscroll-item className="flex w-[70vw] shrink-0 items-center md:w-[32vw] md:min-w-[420px]">
+          <li data-hscroll-item className="flex w-[70vw] shrink-0 items-center md:h-[62svh] md:w-[32vw] md:min-w-[420px]">
             <a
               href="#contact"
               className="group/cta flex w-full flex-col items-start justify-center gap-6 rounded-xl border border-white/25 bg-forest/60 p-8 transition-colors duration-500 hover:border-teal-light md:p-12"
@@ -140,7 +140,7 @@ export default function SelectedWork() {
         </ul>
       </div>
 
-      <div className="mx-auto mt-12 w-full max-w-[1440px] px-6 md:mt-16 md:px-12" aria-hidden="true">
+      <div className="mx-auto mt-8 w-full max-w-[1440px] px-6 md:mt-10 md:px-12" aria-hidden="true">
         <div className="h-px w-full bg-white/15">
           <div data-hscroll-progressbar className="h-px w-full origin-left scale-x-0 bg-teal-light" />
         </div>
