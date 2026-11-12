@@ -86,7 +86,93 @@ export const FAQS = [
   },
 ];
 
-export const PROJECT_PLACEHOLDERS = [
+// Layout metadata per project: rotation, vertical offset, image treatment and title
+// position. Cards are intentionally varied so the horizontal flow feels editorial.
+export type Project = {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  services: string[];
+  image: string;
+  alt: string;
+};
+
+type CardLayout = {
+  rotation: number;
+  tilt: number;
+  yOffset: string;
+  widthClass: string;
+  aspect: string;
+  imageTreatment: string;
+  titleOverlay: boolean;
+  mediaScale: string;
+};
+
+export const PROJECT_CARD_LAYOUTS: CardLayout[] = [
+  {
+    rotation: -2,
+    tilt: 1.6,
+    yOffset: 'md:mt-0',
+    widthClass: 'w-[84vw] md:w-[40vw] md:min-w-[560px]',
+    aspect: 'aspect-[4/3] md:aspect-[7/5]',
+    imageTreatment: 'saturate-[0.85] contrast-110',
+    titleOverlay: false,
+    mediaScale: 'h-[115%] -top-[7.5%]',
+  },
+  {
+    rotation: 2.5,
+    tilt: 2.4,
+    yOffset: 'md:mt-32',
+    widthClass: 'w-[76vw] md:w-[27vw] md:min-w-[380px]',
+    aspect: 'aspect-[3/4]',
+    imageTreatment: 'grayscale group-hover:grayscale-0',
+    titleOverlay: true,
+    mediaScale: 'h-[118%] -top-[9%]',
+  },
+  {
+    rotation: -1.5,
+    tilt: 1.2,
+    yOffset: 'md:mt-16',
+    widthClass: 'w-[86vw] md:w-[34vw] md:min-w-[470px]',
+    aspect: 'aspect-[4/5] md:aspect-[3/4]',
+    imageTreatment: 'contrast-125 saturate-50',
+    titleOverlay: true,
+    mediaScale: 'h-[112%] -top-[6%]',
+  },
+  {
+    rotation: 3,
+    tilt: 2.8,
+    yOffset: 'md:mt-40',
+    widthClass: 'w-[80vw] md:w-[24vw] md:min-w-[340px]',
+    aspect: 'aspect-[3/4] md:aspect-[4/5]',
+    imageTreatment: 'grayscale-[0.6] group-hover:grayscale-0',
+    titleOverlay: false,
+    mediaScale: 'h-[120%] -top-[10%]',
+  },
+  {
+    rotation: -2.6,
+    tilt: 2,
+    yOffset: 'md:mt-8',
+    widthClass: 'w-[82vw] md:w-[31vw] md:min-w-[430px]',
+    aspect: 'aspect-[4/3] md:aspect-[5/4]',
+    imageTreatment: 'sepia-[0.25] contrast-110',
+    titleOverlay: true,
+    mediaScale: 'h-[116%] -top-[8%]',
+  },
+  {
+    rotation: 1.8,
+    tilt: 1.4,
+    yOffset: 'md:mt-24',
+    widthClass: 'w-[78vw] md:w-[26vw] md:min-w-[360px]',
+    aspect: 'aspect-[3/4]',
+    imageTreatment: 'grayscale group-hover:grayscale-0 contrast-110',
+    titleOverlay: false,
+    mediaScale: 'h-[115%] -top-[7.5%]',
+  },
+];
+
+export const PROJECT_PLACEHOLDERS: Project[] = [
   {
     id: 'placeholder-01',
     title: 'Project Placeholder 01',
@@ -130,5 +216,27 @@ export const PROJECT_PLACEHOLDERS = [
     image:
       'https://images.pexels.com/photos/3559252/pexels-photo-3559252.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     alt: 'Modern architecture with concrete pillars and dramatic shadows',
+  },
+  {
+    id: 'placeholder-05',
+    title: 'Project Placeholder 05',
+    category: 'AI & Automation',
+    description:
+      'Placeholder automation case study. Workflows, tooling and outcomes will be documented once approved for publication.',
+    services: ['AI Automations & Creative Production'],
+    image:
+      'https://images.pexels.com/photos/16512513/pexels-photo-16512513.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    alt: 'Geometric architecture with strong shadows and sunlight',
+  },
+  {
+    id: 'placeholder-06',
+    title: 'Project Placeholder 06',
+    category: 'Social & Content',
+    description:
+      'Placeholder content case study. Shoots, channels and posting cadence will be detailed when the material is approved.',
+    services: ['Social Media Marketing & Content Shoot', 'Creative & Design'],
+    image:
+      'https://images.pexels.com/photos/15569284/pexels-photo-15569284.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    alt: 'Modern desk setup with design elements and accessories',
   },
 ];

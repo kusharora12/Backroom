@@ -10,13 +10,13 @@ const BRAND_LOGOS = [
 
 const TILE_CROPS = [
   { scale: 1, position: 'center' },
-  { scale: 1.35, position: 'left center' },
-  { scale: 1.6, position: 'right top' },
-  { scale: 1.2, position: 'center bottom' },
-  { scale: 1.8, position: 'left bottom' },
-  { scale: 1.1, position: 'right center' },
-  { scale: 1.45, position: 'center top' },
-  { scale: 1.25, position: 'right bottom' },
+  { scale: 1.06, position: 'center' },
+  { scale: 1, position: 'center' },
+  { scale: 1.08, position: 'center' },
+  { scale: 1, position: 'center' },
+  { scale: 1.05, position: 'center' },
+  { scale: 1, position: 'center' },
+  { scale: 1.07, position: 'center' },
 ];
 
 const TILE_BACKGROUNDS = ['bg-ivory', 'bg-midnight', 'bg-teal-dark', 'bg-ivory', 'bg-forest', 'bg-midnight', 'bg-teal-dark', 'bg-ivory'];
@@ -66,10 +66,10 @@ export default function BrandWall() {
                       aria-hidden={index !== active}
                       loading="lazy"
                       decoding="async"
-                      className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-in-out ${
+                      className={`absolute left-1/2 top-1/2 h-[60%] w-[60%] -translate-x-1/2 -translate-y-1/2 object-contain transition-[opacity,filter] duration-700 ease-in-out ${
                         index === active ? 'opacity-100' : 'opacity-0'
                       }`}
-                      style={{ objectPosition: crop.position, transform: `scale(${crop.scale})` }}
+                      style={{ objectPosition: crop.position, transform: `translate(-50%, -50%) scale(${crop.scale})` }}
                     />
                   ))}
                 </div>
