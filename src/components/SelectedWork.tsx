@@ -49,10 +49,17 @@ export default function SelectedWork() {
               <li
                 key={project.id}
                 data-hscroll-item
-                className={`group relative shrink-0 ${layout.widthClass} ${layout.yOffset}`}
+                className={`group relative shrink-0 transition-z-index duration-300 hover:z-10 ${
+                  index > 0 ? (index % 2 === 1 ? '-ml-2 md:-ml-14' : '-ml-1 md:-ml-8') : ''
+                } ${layout.widthClass} ${layout.yOffset}`}
                 style={{ ['--card-rotation' as string]: `${layout.rotation}deg` }}
               >
-                <div data-hscroll-tilt data-tilt={layout.tilt} className="will-change-transform" style={{ rotate: `${layout.rotation}deg` }}>
+                <div
+                  data-hscroll-tilt
+                  data-tilt={layout.tilt}
+                  className="will-change-transform transition-shadow duration-500 group-hover:drop-shadow-[0_36px_60px_rgba(0,0,0,0.55)]"
+                  style={{ rotate: `${layout.rotation}deg` }}
+                >
                   <article className="relative overflow-hidden rounded-xl bg-forest shadow-[0_28px_70px_-30px_rgba(0,0,0,0.85)] ring-1 ring-white/10">
                     <div className={`relative overflow-hidden ${layout.aspect}`}>
                       <div data-hscroll-media className={`absolute inset-x-0 ${layout.mediaScale}`}>
