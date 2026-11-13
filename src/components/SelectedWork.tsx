@@ -5,7 +5,7 @@ import { usePinnedHorizontalScroll } from '@/hooks/usePinnedHorizontalScroll';
 
 type Project = (typeof PROJECT_PLACEHOLDERS)[number];
 
-const CARD_ROTATIONS = [-2, 1.5, -1.2, 2.2, -1.6, 1.2];
+const CARD_ROTATIONS = [-5, 2, -1, 4, -3, 2.5];
 
 export default function SelectedWork() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -18,7 +18,7 @@ export default function SelectedWork() {
       ref={sectionRef}
       id="work"
       aria-labelledby="work-title"
-      className="relative mb-24 overflow-hidden bg-teal-dark py-[8svh] text-white motion-safe:md:mb-40 motion-safe:md:flex motion-safe:md:h-svh motion-safe:md:flex-col motion-safe:md:justify-center motion-safe:md:py-0"
+      className="relative mb-24 min-h-svh overflow-x-clip bg-teal-dark py-16 text-white md:mb-40 md:py-20"
     >
       <div className="mx-auto w-full max-w-[1440px] px-6 md:px-12">
         <div className="flex items-end justify-between gap-6">
@@ -47,8 +47,6 @@ export default function SelectedWork() {
               className="group relative w-[78vw] min-w-[280px] max-w-[520px] shrink-0 md:w-[34vw] md:min-w-[460px]"
             >
               <div
-                data-hscroll-tilt
-                data-tilt={CARD_ROTATIONS[index % CARD_ROTATIONS.length]}
                 className="will-change-transform transition-[filter] duration-500 group-hover:drop-shadow-[0_36px_60px_rgba(0,0,0,0.45)]"
                 style={{ rotate: `${CARD_ROTATIONS[index % CARD_ROTATIONS.length]}deg` }}
               >
@@ -56,7 +54,7 @@ export default function SelectedWork() {
                   type="button"
                   onClick={() => setActive(project)}
                   aria-label={`View ${project.title}`}
-                  className="relative block h-[48svh] min-h-[300px] w-full overflow-hidden rounded-xl bg-forest ring-1 ring-white/15"
+                  className="relative block h-[52svh] min-h-[320px] w-full overflow-hidden rounded-xl bg-forest ring-1 ring-white/15 md:h-[68svh]"
                 >
                   <div data-hscroll-media className="absolute inset-x-0 -inset-y-[8%]">
                     <img

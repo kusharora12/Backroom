@@ -108,7 +108,7 @@ function Sculpture({ pointerRef, compact }: SculptureProps) {
           <meshStandardMaterial color="#007F73" metalness={0.65} roughness={0.22} />
         </mesh>
         <mesh ref={shellRef} scale={1.3}>
-          <icosahedronGeometry args={[1.2, 1]} />
+          <sphereGeometry args={[1.2, 16, 12]} />
           <meshBasicMaterial color="#35B5A3" wireframe transparent opacity={0.28} />
         </mesh>
       </group>

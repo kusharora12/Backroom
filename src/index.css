@@ -84,6 +84,7 @@
   }
 
   .hscroll-track {
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
@@ -94,7 +95,7 @@
     display: none;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
+  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
     .hscroll-track {
       overflow: visible;
     }

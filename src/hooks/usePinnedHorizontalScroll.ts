@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const PIN_QUERY = '(prefers-reduced-motion: no-preference)';
+const PIN_QUERY = '(prefers-reduced-motion: no-preference) and (min-width: 768px)';
 
 export function usePinnedHorizontalScroll(sectionRef: RefObject<HTMLElement>, trackRef: RefObject<HTMLElement>) {
   useLayoutEffect(() => {
@@ -23,9 +23,10 @@ export function usePinnedHorizontalScroll(sectionRef: RefObject<HTMLElement>, tr
         const curveDepth = Math.min(52, window.innerHeight * 0.07);
 
         curveItems.forEach((item) => {
-          const itemCenter = item.getBoundingClientRect().left + item.getBoundingClientRect().width / 2;
+          const bounds = item.getBoundingClientRect();
+          const itemCenter = bounds.left + bounds.width / 2;
           const distance = Math.abs(itemCenter - viewportCenter);
-          const falloff = Math.min(distance / (window.innerWidth * 0.72), 1);
+          const falloff = Math.min(distance / (window.innerWidth * 0.45), 1);
           gsap.set(item, { y: -curveDepth * (1 - falloff * falloff) });
         });
       };
