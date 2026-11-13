@@ -76,7 +76,7 @@ export default function Footer() {
       <Reveal className="mt-10 select-none px-2 md:mt-16">
         <p
           aria-hidden="true"
-          className="display whitespace-nowrap text-center font-bold leading-[0.9] text-[clamp(72px,14vw,220px)] text-midnight/90"
+          className="display whitespace-nowrap text-center font-bold leading-[0.9] text-[clamp(72px,14vw,220px)] text-white/95"
         >
           BYE.
         </p>

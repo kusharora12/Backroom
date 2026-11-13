@@ -25,9 +25,9 @@ export default function Process() {
 
       gsap.fromTo(
         '[data-progress-line]',
-        { scaleY: 0 },
+        { scaleX: 0 },
         {
-          scaleY: 1,
+          scaleX: 1,
           ease: 'none',
           scrollTrigger: {
             trigger: section,
@@ -84,7 +84,7 @@ export default function Process() {
                   className="absolute left-0 top-[-1px] h-[3px] w-full origin-left scale-x-0 bg-teal-light transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
                   aria-hidden="true"
                 />
-                <p className="font-display text-[clamp(56px,7vw,112px)] font-bold leading-[1] text-white/15 transition-colors duration-500 group-hover:text-teal-light/60 md:data-[active=true]:text-teal-light/40">
+                <p className="font-display text-[clamp(56px,7vw,112px)] font-bold leading-[1] text-white transition-colors duration-500 group-hover:text-teal-light">
                   {step.number}
                 </p>
                 <h3 className="mt-6 font-display text-[28px] font-bold uppercase leading-[1.2] text-white transition-transform duration-500 group-hover:translate-x-1 md:text-[32px]">

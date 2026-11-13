@@ -8,18 +8,7 @@ const BRAND_LOGOS = [
   { src: '/brand-logos/UDTS_Robo_Trade_Logo%20copy.png', alt: 'UDTS Robo Trade logo' },
 ];
 
-const TILE_CROPS = [
-  { scale: 1, position: 'center' },
-  { scale: 1.06, position: 'center' },
-  { scale: 1, position: 'center' },
-  { scale: 1.08, position: 'center' },
-  { scale: 1, position: 'center' },
-  { scale: 1.05, position: 'center' },
-  { scale: 1, position: 'center' },
-  { scale: 1.07, position: 'center' },
-];
-
-const TILE_BACKGROUNDS = ['bg-ivory', 'bg-midnight', 'bg-teal-dark', 'bg-ivory', 'bg-forest', 'bg-midnight', 'bg-teal-dark', 'bg-ivory'];
+const TILE_BACKGROUNDS = Array.from({ length: 8 }, () => 'bg-ivory');
 
 const TILE_COUNT = 8;
 const SWAP_INTERVAL_MS = 1000;
@@ -52,12 +41,11 @@ export default function BrandWall() {
           </h2>
         </Reveal>
 
-        <ul className="mt-14 grid grid-cols-2 gap-3 md:mt-20 md:grid-cols-4 md:gap-5">
+        <ul className="mt-14 grid grid-cols-2 gap-1 border border-cream bg-cream md:mt-20 md:grid-cols-4">
           {visuals.map((active, tile) => {
-            const crop = TILE_CROPS[tile];
             return (
               <Reveal as="li" key={tile} delay={tile * 80} className="aspect-square">
-                <div className={`relative h-full w-full overflow-hidden ${TILE_BACKGROUNDS[tile]}`}>
+                <div className={`relative flex h-full w-full items-center justify-center overflow-hidden p-8 ${TILE_BACKGROUNDS[tile]}`}>
                   {BRAND_LOGOS.map((logo, index) => (
                     <img
                       key={logo.src}
@@ -66,10 +54,9 @@ export default function BrandWall() {
                       aria-hidden={index !== active}
                       loading="lazy"
                       decoding="async"
-                      className={`absolute left-1/2 top-1/2 h-[60%] w-[60%] -translate-x-1/2 -translate-y-1/2 object-contain transition-[opacity,filter] duration-700 ease-in-out ${
-                        index === active ? 'opacity-100' : 'opacity-0'
+                      className={`absolute h-[52%] w-[58%] object-contain mix-blend-multiply transition-[opacity,transform] duration-700 ease-out ${
+                        index === active ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
                       }`}
-                      style={{ objectPosition: crop.position, transform: `translate(-50%, -50%) scale(${crop.scale})` }}
                     />
                   ))}
                 </div>
