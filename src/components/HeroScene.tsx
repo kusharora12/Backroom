@@ -37,7 +37,7 @@ function Sculpture({ pointerRef, compact }: SculptureProps) {
   const coreRef = useRef<THREE.Mesh>(null);
   const shellRef = useRef<THREE.Mesh>(null);
   const viewport = useThree((state) => state.viewport);
-  const geometry = useMemo(() => createCoreGeometry(compact ? 10 : 30), [compact]);
+  const geometry = useMemo(() => createCoreGeometry(compact ? 4 : 6), [compact]);
   const restPositions = useMemo(() => Float32Array.from(geometry.attributes.position.array), [geometry]);
   const smoothed = useRef({ rx: 0, ry: 0, scale: 0, y: 0, presence: 0 });
 

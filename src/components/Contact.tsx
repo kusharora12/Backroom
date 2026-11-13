@@ -138,15 +138,15 @@ export default function Contact() {
   const labelClass = 'mb-1 block font-mono text-[11px] uppercase tracking-[0.14em] text-white/60';
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="relative overflow-hidden bg-midnight py-28 md:py-40">
+    <section id="contact" aria-labelledby="contact-title" className="relative overflow-x-hidden bg-midnight py-24 md:py-40">
       <div
         className="pointer-events-none absolute -bottom-40 -left-40 h-[480px] w-[480px] rounded-full bg-teal/20 blur-[140px]"
         aria-hidden="true"
       />
       <div className="relative mx-auto grid max-w-[1440px] gap-16 px-6 md:grid-cols-12 md:gap-x-12 md:px-12">
-        <Reveal className="md:col-span-5">
+        <Reveal className="min-w-0 md:col-span-5">
           <p className="font-mono text-[12px] uppercase tracking-[0.18em] text-teal-light">07 &mdash; Contact</p>
-          <h2 id="contact-title" className="display mt-6 text-[clamp(44px,7vw,112px)] text-white">
+          <h2 id="contact-title" className="display mt-6 max-w-[11ch] text-[clamp(38px,11vw,72px)] text-white md:max-w-none md:text-[clamp(44px,7vw,112px)]">
             Have something <span className="text-teal-light">worth building?</span>
           </h2>
           <p className="mt-8 max-w-md text-lg leading-[1.5] text-white/75">
@@ -157,22 +157,22 @@ export default function Contact() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between border-b border-white/15 py-6 font-display text-2xl font-bold uppercase text-white transition-colors duration-300 hover:text-teal-light"
+              className="group flex min-w-0 items-start justify-between gap-4 border-b border-white/15 py-6 font-display text-2xl font-bold uppercase text-white transition-colors duration-300 hover:text-teal-light"
             >
               WhatsApp us
               <ArrowUpRight className="h-6 w-6 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
             </a>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="group flex items-center justify-between border-b border-white/15 py-6 font-display text-2xl font-bold uppercase text-white transition-colors duration-300 hover:text-teal-light"
+              className="group flex min-w-0 items-start justify-between gap-4 border-b border-white/15 py-6 font-display text-2xl font-bold uppercase text-white transition-colors duration-300 hover:text-teal-light"
             >
-              {CONTACT_EMAIL}
+              <span className="min-w-0 break-all">{CONTACT_EMAIL}</span>
               <ArrowUpRight className="h-6 w-6 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
             </a>
           </div>
         </Reveal>
 
-        <Reveal className="md:col-span-6 md:col-start-7" delay={150}>
+        <Reveal className="min-w-0 md:col-span-6 md:col-start-7" delay={150}>
           {status === 'success' ? (
             <div role="status" className="flex flex-col gap-6 border border-teal-light/40 bg-midnight p-10">
               <span className="flex h-12 w-12 items-center justify-center bg-teal">

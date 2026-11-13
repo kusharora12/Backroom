@@ -18,7 +18,7 @@ export default function SelectedWork() {
       ref={sectionRef}
       id="work"
       aria-labelledby="work-title"
-      className="relative overflow-hidden bg-teal-dark py-[8svh] text-white motion-safe:md:flex motion-safe:md:h-svh motion-safe:md:flex-col motion-safe:md:justify-center motion-safe:md:py-0"
+      className="relative mb-24 overflow-hidden bg-teal-dark py-[8svh] text-white motion-safe:md:mb-40 motion-safe:md:flex motion-safe:md:h-svh motion-safe:md:flex-col motion-safe:md:justify-center motion-safe:md:py-0"
     >
       <div className="mx-auto w-full max-w-[1440px] px-6 md:px-12">
         <div className="flex items-end justify-between gap-6">
@@ -43,6 +43,7 @@ export default function SelectedWork() {
             <li
               key={project.id}
               data-hscroll-item
+              data-hscroll-curve
               className="group relative w-[78vw] min-w-[280px] max-w-[520px] shrink-0 md:w-[34vw] md:min-w-[460px]"
             >
               <div

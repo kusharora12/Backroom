@@ -16,6 +16,19 @@ export function usePinnedHorizontalScroll(sectionRef: RefObject<HTMLElement>, tr
     mm.add(PIN_QUERY, () => {
       const getDistance = () => Math.max(0, track.scrollWidth - window.innerWidth);
       const progressBar = section.querySelector<HTMLElement>('[data-hscroll-progressbar]');
+      const curveItems = gsap.utils.toArray<HTMLElement>('[data-hscroll-curve]', track);
+
+      const updateCurve = () => {
+        const viewportCenter = window.innerWidth / 2;
+        const curveDepth = Math.min(52, window.innerHeight * 0.07);
+
+        curveItems.forEach((item) => {
+          const itemCenter = item.getBoundingClientRect().left + item.getBoundingClientRect().width / 2;
+          const distance = Math.abs(itemCenter - viewportCenter);
+          const falloff = Math.min(distance / (window.innerWidth * 0.72), 1);
+          gsap.set(item, { y: -curveDepth * (1 - falloff * falloff) });
+        });
+      };
 
       const horizontal = gsap.to(track, {
         x: () => -getDistance(),
@@ -30,9 +43,13 @@ export function usePinnedHorizontalScroll(sectionRef: RefObject<HTMLElement>, tr
           invalidateOnRefresh: true,
           onUpdate: (self) => {
             if (progressBar) progressBar.style.transform = `scaleX(${self.progress})`;
+            updateCurve();
           },
+          onRefresh: updateCurve,
         },
       });
+
+      updateCurve();
 
       gsap.utils.toArray<HTMLElement>('[data-hscroll-item]', track).forEach((item) => {
         const containerST = (start: string, end: string) => ({
