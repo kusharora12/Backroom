@@ -23,7 +23,7 @@ function easeOutCubic(value: number) {
 }
 
 function createCoreGeometry(detail: number) {
-  const geometry = new THREE.IcosahedronGeometry(1.2, detail);
+  const geometry = new THREE.SphereGeometry(1.2, detail * 8, detail * 5);
   geometry.deleteAttribute('normal');
   geometry.deleteAttribute('uv');
   const merged = mergeVertices(geometry);
