@@ -17,15 +17,15 @@ type PanelStyle = {
 };
 
 const PANEL_STYLES: PanelStyle[] = [
-  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[52svh] md:h-[64svh]' },
-  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[52svh] md:h-[64svh]' },
-  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[52svh] md:h-[64svh]' },
-  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[52svh] md:h-[64svh]' },
-  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[52svh] md:h-[64svh]' },
-  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[52svh] md:h-[64svh]' },
-  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[52svh] md:h-[64svh]' },
-  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[52svh] md:h-[64svh]' },
-  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[52svh] md:h-[64svh]' }
+  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[44svh] md:h-[52svh]' },
+  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[44svh] md:h-[52svh]' },
+  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[44svh] md:h-[52svh]' },
+  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[44svh] md:h-[52svh]' },
+  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[44svh] md:h-[52svh]' },
+  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[44svh] md:h-[52svh]' },
+  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[44svh] md:h-[52svh]' },
+  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[44svh] md:h-[52svh]' },
+  { widthClass: 'w-[80vw] md:w-[34vw] md:min-w-[440px]', yOffset: 'md:mt-0', rotation: 0, tilt: 0, treatment: '', titlePosition: 'bottom', numberSize: 'text-[clamp(52px,5.5vw,92px)]', accent: 'text-white', imageHeight: 'h-[44svh] md:h-[52svh]' }
 ];
 
 export default function Services() {
@@ -51,7 +51,7 @@ export default function Services() {
       ref={sectionRef}
       id="services"
       aria-labelledby="services-title"
-      className="relative min-h-svh overflow-x-clip bg-ivory px-0 pb-28 pt-16 text-midnight md:pb-40 md:pt-20"
+      className="relative overflow-x-clip bg-ivory px-0 pb-24 pt-16 text-midnight md:pb-36 md:pt-20"
     >
       <div className="mx-auto w-full max-w-[1440px] px-6 md:px-12">
         <div className="grid gap-6 md:grid-cols-12 md:items-end">
@@ -76,7 +76,7 @@ export default function Services() {
         </div>
       </div>
 
-      <div className="relative mt-10 pb-12 md:mt-14 md:pb-24">
+      <div className="relative mt-10 md:mt-14">
         <ul ref={trackRef} className="hscroll-track no-scrollbar flex w-max items-start gap-8 pl-6 pr-[14vw] md:gap-12 md:pl-12 md:pr-[12vw]">
           {SERVICE_CATEGORIES.map((category, index) => {
             const style = PANEL_STYLES[index];
